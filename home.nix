@@ -416,7 +416,7 @@
             enable = true;
             installCargo = false;
             installRustc = false;
-            installLanguageServer = false;
+            package = null;
           };
 
           pylsp = {
