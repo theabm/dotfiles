@@ -5,7 +5,31 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  sddm_theme = let
+    image = pkgs.fetchurl {
+      url = "https://github.com/theabm/wallpapers/blob/main/one-piece-nika-moon.jpg?raw=true";
+      sha256 = "sha256-MDznlZFHT+GjpD6TuUNYW+Us3Us7Hssnieiqx5OIIhc=";
+    };
+  in
+    pkgs.sddm-chili-theme.overrideAttrs {
+      postInstall = ''
+        mkdir -p $out/share/sddm/themes/chili
+
+        mv * $out/share/sddm/themes/chili/
+
+        cd $out/share/sddm/themes/chili/
+
+        rm assets/background.jpg
+
+        cat ${image} >> tmp.txt
+
+        cp -r ${image} $out/share/sddm/themes/chili/assets/background.jpg
+
+
+      '';
+    };
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -65,8 +89,10 @@
       layout = "it";
       variant = "";
     };
-    displayManager.sddm.enable = true;
-    # desktopManager.gnome.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      theme = "${sddm_theme}/share/sddm/themes/chili";
+    };
   };
 
   # Configure console keymap
@@ -132,6 +158,8 @@
     gcc
     ghc
     zathura
+    feh
+    sddm_theme
   ];
 
   fonts.packages = with pkgs; [
