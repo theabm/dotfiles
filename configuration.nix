@@ -126,6 +126,7 @@ in {
       nvtop
       bazecor
       signal-desktop
+      exercism
     ];
   };
 
@@ -157,6 +158,7 @@ in {
     starship
     gcc
     ghc
+    #haskellPackages.ghcup
     zathura
     feh
     sddm_theme
