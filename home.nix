@@ -411,7 +411,10 @@
           lua-ls.enable = true;
           nil_ls.enable = true;
 
-          hls.enable = true;
+          hls = {
+            enable = true;
+            package = null;
+          };
 
           ruff-lsp.enable = true;
           rust-analyzer = {
