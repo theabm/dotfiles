@@ -158,7 +158,7 @@ in {
     starship
     gcc
     ghc
-    #haskellPackages.ghcup
+    stack
     zathura
     feh
     sddm_theme
