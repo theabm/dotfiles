@@ -157,8 +157,8 @@ in {
     ripgrep
     starship
     gcc
-    ghc
-    stack
+    #ghc
+    #stack
     zathura
     feh
     sddm_theme
