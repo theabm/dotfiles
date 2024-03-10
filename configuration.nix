@@ -162,6 +162,7 @@ in {
     zathura
     feh
     sddm_theme
+    zotero
   ];
 
   fonts.packages = with pkgs; [
