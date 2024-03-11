@@ -1,6 +1,5 @@
 {
-programs.nixvim = {
-
+  programs.nixvim = {
     extraConfigLua = ''
         cmp_kinds = {
             Text = '  ',
@@ -31,7 +30,7 @@ programs.nixvim = {
       }
     '';
 
-plugins = {
+    plugins = {
       # sources
       cmp-buffer.enable = true;
       cmp-nvim-lsp.enable = true;
@@ -101,6 +100,6 @@ plugins = {
           window.completion.__raw = "cmp.config.window.bordered()";
         };
       };
-};
-};
+    };
+  };
 }

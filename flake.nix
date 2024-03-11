@@ -40,7 +40,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.andres.imports = [
-                ./home.nix
+                ./home
                 nixvim.homeManagerModules.nixvim
               ];
             };

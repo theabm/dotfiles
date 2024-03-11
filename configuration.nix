@@ -152,13 +152,9 @@ in {
     pywal
     rustup
     zellij
-    zoxide
     bat
     ripgrep
-    starship
     gcc
-    #ghc
-    #stack
     zathura
     feh
     sddm_theme
