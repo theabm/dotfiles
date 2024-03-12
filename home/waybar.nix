@@ -2,8 +2,8 @@
   shared_config = import ./shared_config.nix;
 
   nixos-image = pkgs.fetchurl{
-  # url = ""
-  # sha256 = ;
+  url = "https://raw.githubusercontent.com/theabm/dotfiles/main/home/nixos-icon.svg";
+  sha256 = "sha256-Kl0+lC1dsnxPM+whYBxFj4adGNU+gxQiAnqKSCjaN4Q=";
   };
 in {
   programs.waybar = {
@@ -213,7 +213,7 @@ in {
       }
 
       #custom-nixos {
-      	background-image: url('/home/andres/.config/myoldwaybar/nixos-icon.svg');
+      	background-image: url('${nixos-image}');
       	background-position: right;
       	background-repeat: no-repeat;
       	background-size: contain;
