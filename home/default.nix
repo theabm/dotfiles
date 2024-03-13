@@ -26,7 +26,7 @@
     ./fish.nix
     ./himalaya.nix
     ./kitty.nix
-    ./waybar.nix
+    ./waybar
   ];
   # technically I dont need this since nixvim should take care of this.
   programs.ruff = {
