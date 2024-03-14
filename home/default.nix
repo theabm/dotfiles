@@ -27,6 +27,7 @@
     ./himalaya.nix
     ./kitty.nix
     ./waybar
+    # ./hyprland
   ];
   # technically I dont need this since nixvim should take care of this.
   programs.ruff = {

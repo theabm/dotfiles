@@ -140,7 +140,6 @@ in {
     wget
     neovim
     kitty
-    waybar
     mako
     swww
     rofi-wayland
