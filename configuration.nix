@@ -158,6 +158,7 @@ in {
     feh
     sddm_theme
     zotero
+    mullvad-vpn
   ];
 
   fonts.packages = with pkgs; [
