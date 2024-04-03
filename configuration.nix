@@ -39,7 +39,8 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # according to hyprland, I should add this to my configuration. However, I think
   # it works better without this setting.
@@ -123,7 +124,7 @@ in {
     extraGroups = ["networkmanager" "wheel" "uucp" "dialout"];
     packages = with pkgs; [
       firefox
-      nvtop
+      nvtopPackages.full
       bazecor
       signal-desktop
       exercism
@@ -250,6 +251,7 @@ in {
       experimental-features = ["nix-command" "flakes"];
       max-jobs = "auto";
       auto-optimise-store = true;
+      trusted-users = ["root" "andres"];
     };
     gc = {
       automatic = true;

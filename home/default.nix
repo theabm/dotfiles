@@ -27,15 +27,10 @@
     ./himalaya.nix
     ./kitty.nix
     ./waybar
+    ./nix.nix
     # ./hyprland
   ];
   # technically I dont need this since nixvim should take care of this.
-  programs.ruff = {
-    enable = true;
-    settings = {
-      line-length = 100;
-    };
-  };
 
   home.packages = with pkgs; [
     black
@@ -43,6 +38,18 @@
 
   programs = {
     gpg.enable = true;
+
+    ruff = {
+      enable = true;
+      settings = {
+        line-length = 100;
+      };
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
 
     lazygit.enable = true;
   };

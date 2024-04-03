@@ -1,6 +1,6 @@
 {
   programs.nixvim = {
-    files."after/ftplugin/norg.lua".localOptions = {
+    files."after/ftplugin/norg.lua".localOpts = {
       conceallevel = 1;
     };
 

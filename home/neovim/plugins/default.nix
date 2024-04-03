@@ -15,7 +15,7 @@
     nvim-autopairs.enable = true;
 
     luasnip.enable = true;
-    comment-nvim.enable = true;
+    comment.enable = true;
     gitsigns.enable = true;
     lualine.enable = true;
     tagbar.enable = true;
