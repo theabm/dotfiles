@@ -36,7 +36,7 @@
       termguicolors = true;
       scrolloff = 999;
       signcolumn = "yes";
-      colorcolumn = "80";
+      colorcolumn = "100";
 
       conceallevel = 2;
       concealcursor = "c";
