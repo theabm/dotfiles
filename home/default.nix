@@ -24,7 +24,7 @@
   imports = [
     ./neovim
     ./fish.nix
-    ./himalaya.nix
+    # ./himalaya.nix
     ./kitty.nix
     ./waybar
     ./nix.nix

@@ -1,12 +1,13 @@
 {
-  # Settings for fish shell 
+  # Settings for fish shell
   programs = {
     fish = {
       enable = true;
       shellAliases = {
         v = "nvim";
-        #cd = "z";
+        c = "z";
         za = "zathura";
+        y = "yazi";
       };
       interactiveShellInit = ''
         # Commands to run in interactive sessions can go here
@@ -15,7 +16,7 @@
       '';
     };
 
-    # terminal programs 
+    # terminal programs
     zoxide = {
       enable = true;
       enableFishIntegration = true;
