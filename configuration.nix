@@ -90,10 +90,11 @@ in {
       layout = "it";
       variant = "";
     };
-    displayManager.sddm = {
-      enable = true;
-      theme = "${sddm_theme}/share/sddm/themes/chili";
-    };
+  };
+
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "${sddm_theme}/share/sddm/themes/chili";
   };
 
   # Configure console keymap
