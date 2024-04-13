@@ -8,6 +8,10 @@
         c = "z";
         za = "zathura";
         y = "yazi";
+        gl = ''
+          git log --branches --remotes --tags --graph --pretty='%C(yellow)%h
+                    %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s' --date=relative
+        '';
       };
       interactiveShellInit = ''
         # Commands to run in interactive sessions can go here
