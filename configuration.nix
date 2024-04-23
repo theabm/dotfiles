@@ -37,8 +37,8 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.luks.devices."luks-899e1d08-30b0-422d-a760-389d75acadf2".device = "/dev/disk/by-uuid/899e1d08-30b0-422d-a760-389d75acadf2";
   networking.hostName = "dede"; # Define your hostname.
@@ -120,13 +120,7 @@ in {
     isNormalUser = true;
     description = "andres";
     extraGroups = ["networkmanager" "wheel" "uucp" "dialout"];
-    packages = with pkgs; [
-      firefox
-      nvtopPackages.full
-      bazecor
-      signal-desktop
-      exercism
-    ];
+    packages = [];
   };
 
   # Allow unfree packages
@@ -136,7 +130,6 @@ in {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
-    neovim
     kitty
     mako
     swww
@@ -156,6 +149,10 @@ in {
     feh
     sddm_theme
     zotero
+    firefox
+    nvtopPackages.full
+    bazecor
+    signal-desktop
   ];
 
   virtualisation.podman = {
@@ -170,19 +167,14 @@ in {
     font-awesome
   ];
 
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland.enable = true;
-  # };
   services.desktopManager.plasma6.enable = true;
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
+  # environment.sessionVariables = {
+  #   NIXOS_OZONE_WL = "1";
+  # };
 
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
     xdgOpenUsePortal = true;
   };
 
