@@ -155,8 +155,13 @@ in {
     signal-desktop
   ];
 
-  virtualisation.podman = {
-    enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+    };
+    docker = {
+      enable = true;
+    };
   };
 
   programs.neovim.enable = true;
