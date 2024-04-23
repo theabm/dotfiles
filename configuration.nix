@@ -25,8 +25,6 @@
         cat ${image} >> tmp.txt
 
         cp -r ${image} $out/share/sddm/themes/chili/assets/background.jpg
-
-
       '';
     };
 in {
@@ -39,15 +37,8 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # according to hyprland, I should add this to my configuration. However, I think
-  # it works better without this setting.
-  # boot.kernelParams = [
-  #       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-  #       "nvidia_drm.modeset=1"
-  # ];
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.luks.devices."luks-899e1d08-30b0-422d-a760-389d75acadf2".device = "/dev/disk/by-uuid/899e1d08-30b0-422d-a760-389d75acadf2";
   networking.hostName = "dede"; # Define your hostname.
@@ -111,10 +102,16 @@ in {
     pulse.enable = true;
   };
 
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware = {
+    # enables support for Bluetooth
+    bluetooth.enable = true;
+    # powers up the default Bluetooth controller on boot
+    bluetooth.powerOnBoot = true;
+  };
+  # enable blueman to configure bluetooth
   services.blueman.enable = true;
 
+  # set fish as default shell.
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
@@ -138,7 +135,6 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     neovim
     kitty
@@ -160,8 +156,11 @@ in {
     feh
     sddm_theme
     zotero
-    mullvad-vpn
   ];
+
+  virtualisation.podman = {
+    enable = true;
+  };
 
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
@@ -171,10 +170,11 @@ in {
     font-awesome
   ];
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland.enable = true;
+  # };
+  services.desktopManager.plasma6.enable = true;
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
