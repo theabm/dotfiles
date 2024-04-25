@@ -1,5 +1,13 @@
 {
   programs.nixvim = {
+    # Set indentation to 2 spaces
+    files."after/ftplugin/nix.lua" = {
+      localOpts = {
+        tabstop = 2;
+        shiftwidth = 2;
+      };
+    };
+
     opts = {
       # show numbers
       number = true;
