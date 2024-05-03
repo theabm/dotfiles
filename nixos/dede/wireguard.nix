@@ -23,9 +23,10 @@
 
       peers = [
         {
-          # server
+          name = "server";
           publicKey = "4cxMtehccXYPILDgrvVc+/neazpgY361Z7fsURDjxHQ=";
           allowedIPs = ["10.10.10.1/32"];
+          endpoint = "192.168.1.100:51820";
         }
       ];
     };

@@ -23,7 +23,7 @@
 
       peers = [
         {
-          # dede - laptop
+          name = "dede-laptop";
           publicKey = "ZFhTIwcZmjMjJaYw2nLx4Q3baHeW33F+UGuu5yfzWBI=";
           allowedIPs = ["10.10.10.2/32"];
         }
