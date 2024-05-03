@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -15,7 +14,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages;
 
-  # boot.initrd.luks.devices."luks-899e1d08-30b0-422d-a760-389d75acadf2".device = "/dev/disk/by-uuid/899e1d08-30b0-422d-a760-389d75acadf2";
+  boot.initrd.luks.devices."luks-6dae719c-33c5-4d70-bc7f-bfb2b9a4e5a4".device = "/dev/disk/by-uuid/6dae719c-33c5-4d70-bc7f-bfb2b9a4e5a4";
   networking.hostName = "franky"; # Define your hostname.
 
   # Enable networking
@@ -51,16 +50,6 @@
   # Configure console keymap
   console.keyMap = "it2";
 
-  hardware = {
-    # enables support for Bluetooth
-    bluetooth.enable = true;
-    # powers up the default Bluetooth controller on boot
-    bluetooth.powerOnBoot = true;
-  };
-
-  # enable blueman to configure bluetooth
-  services.blueman.enable = true;
-
   # set fish as default shell.
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
@@ -90,6 +79,7 @@
     gcc
     nvtopPackages.full
     wireguard-tools
+    firefox
   ];
 
   virtualisation = {
