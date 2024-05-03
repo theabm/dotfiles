@@ -16,7 +16,9 @@
     # color scheme
     colorschemes.tokyonight = {
       enable = true;
-      style = "night";
+      settings = {
+        style = "night";
+      };
     };
 
     # cyberdream colorscheme

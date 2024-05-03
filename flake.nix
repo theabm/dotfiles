@@ -31,7 +31,7 @@
         inherit system;
 
         modules = [
-          ./configuration.nix
+          ./nixos/dede/configuration.nix
 
           home-manager.nixosModules.home-manager
 
@@ -40,7 +40,28 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.andres.imports = [
-                ./home
+                ./home/dede
+                nixvim.homeManagerModules.nixvim
+              ];
+            };
+          }
+        ];
+      };
+
+      franky = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = [
+          ./nixos/server/configuration.nix
+
+          home-manager.nixosModules.home-manager
+
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.andres.imports = [
+                ./home/server
                 nixvim.homeManagerModules.nixvim
               ];
             };

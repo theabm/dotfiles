@@ -31,6 +31,7 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    # ./wireguard.nix
   ];
 
   # Bootloader.
@@ -38,7 +39,8 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
 
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   boot.initrd.luks.devices."luks-899e1d08-30b0-422d-a760-389d75acadf2".device = "/dev/disk/by-uuid/899e1d08-30b0-422d-a760-389d75acadf2";
   networking.hostName = "dede"; # Define your hostname.
@@ -153,6 +155,7 @@ in {
     nvtopPackages.full
     bazecor
     signal-desktop
+    wireguard-tools
   ];
 
   virtualisation = {
