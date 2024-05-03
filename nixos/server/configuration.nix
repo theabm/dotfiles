@@ -80,6 +80,7 @@
     nvtopPackages.full
     wireguard-tools
     firefox
+    signal-desktop
   ];
 
   virtualisation = {
