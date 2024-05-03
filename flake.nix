@@ -40,7 +40,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.andres.imports = [
-                ./home/dede
+                ./home/common
                 nixvim.homeManagerModules.nixvim
               ];
             };
@@ -61,7 +61,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.andres.imports = [
-                ./home/server
+                ./home/common
                 nixvim.homeManagerModules.nixvim
               ];
             };
