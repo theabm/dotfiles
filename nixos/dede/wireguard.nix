@@ -4,14 +4,10 @@
   lib,
   ...
 }: {
+  # CLIENT CONFIGURATIOn
   networking = let
     port = 51820;
   in {
-    # enable NAT
-    nat.enable = true;
-    nat.externalInterface = "eth0";
-    nat.internalInterfaces = ["wg0"];
-
     # Open ports
     firewall = {
       allowedUDPPorts = [port];

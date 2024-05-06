@@ -4,14 +4,10 @@
   lib,
   ...
 }: {
+  # SERVER CONFIG
   networking = let
     port = 51820;
   in {
-    # enable NAT
-    nat.enable = true;
-    nat.externalInterface = "eth0";
-    nat.internalInterfaces = ["wg0"];
-
     # Open ports
     firewall = {
       allowedUDPPorts = [port];
@@ -31,6 +27,11 @@
           name = "dede-laptop";
           publicKey = "ZFhTIwcZmjMjJaYw2nLx4Q3baHeW33F+UGuu5yfzWBI=";
           allowedIPs = ["10.10.10.2/32"];
+        }
+        {
+          name = "phone";
+          publicKey = "4mCjfoKI4xD+sMp8Li8gM31grhVBnrRnIsZCJrNduBc=";
+          allowedIPs = ["10.10.10.3/32"];
         }
       ];
     };
