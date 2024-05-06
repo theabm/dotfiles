@@ -7,6 +7,11 @@
   networking = let
     port = 51820;
   in {
+    # enable NAT
+    nat.enable = true;
+    nat.externalInterface = "eth0";
+    nat.internalInterfaces = ["wg0"];
+
     # Open ports
     firewall = {
       allowedUDPPorts = [port];
@@ -26,7 +31,8 @@
           name = "server";
           publicKey = "4cxMtehccXYPILDgrvVc+/neazpgY361Z7fsURDjxHQ=";
           allowedIPs = ["10.10.10.1/32"];
-          endpoint = "192.168.1.100:51820";
+          endpoint = "95.246.218.120:51820";
+          persistentKeepalive = 25;
         }
       ];
     };
