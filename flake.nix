@@ -13,6 +13,11 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    neorg-overlay = {
+      url = "github:nvim-neorg/nixpkgs-neorg-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -20,6 +25,7 @@
     nixpkgs,
     home-manager,
     nixvim,
+    neorg-overlay,
     ...
   }: let
     system = "x86_64-linux";
@@ -36,6 +42,7 @@
           home-manager.nixosModules.home-manager
 
           {
+            nixpkgs.overlays = [neorg-overlay.overlays.default];
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
