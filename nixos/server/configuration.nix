@@ -61,6 +61,9 @@
     description = "andres";
     extraGroups = ["networkmanager" "wheel" "uucp" "dialout"];
     packages = [];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO4i3B/ShuuG5zvddLbazGYNEfat3C8TF7d5ixARpHUb andres@dede"
+    ];
   };
 
   # Allow unfree packages
