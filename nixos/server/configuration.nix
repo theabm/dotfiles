@@ -84,6 +84,10 @@
     signal-desktop
   ];
 
+  services.openssh = {
+    enable = true;
+    extraConfig = ''ListenAddress 10.9.7.1'';
+  };
   virtualisation = {
     podman = {
       enable = true;
