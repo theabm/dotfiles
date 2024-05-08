@@ -87,16 +87,18 @@
     signal-desktop
   ];
 
-  services.openssh = {
-    enable = true;
-    extraConfig = ''ListenAddress 10.9.7.1'';
-    listenAddresses = [
-      {
-        addr = "10.9.7.1";
-      }
-    ];
-    settings = {
-      PasswordAuthentication = false;
+  services = {
+    resolved.enable = false;
+    openssh = {
+      enable = true;
+      listenAddresses = [
+        {
+          addr = "10.9.7.1";
+        }
+      ];
+      settings = {
+        PasswordAuthentication = false;
+      };
     };
   };
 

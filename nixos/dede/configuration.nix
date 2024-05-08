@@ -45,12 +45,6 @@ in {
   boot.initrd.luks.devices."luks-899e1d08-30b0-422d-a760-389d75acadf2".device = "/dev/disk/by-uuid/899e1d08-30b0-422d-a760-389d75acadf2";
   networking.hostName = "dede"; # Define your hostname.
 
-  # Enables wireless support via wpa_supplicant.
-  # networking.wireless = {
-  # enable = true;
-  # userControlled.enable = true;
-  # };
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -176,10 +170,6 @@ in {
   ];
 
   services.desktopManager.plasma6.enable = true;
-
-  # environment.sessionVariables = {
-  #   NIXOS_OZONE_WL = "1";
-  # };
 
   xdg.portal = {
     enable = true;
