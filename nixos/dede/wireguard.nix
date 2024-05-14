@@ -6,31 +6,34 @@
 }: {
   # CLIENT CONFIGURATIOn
   networking = let
-    port = 51820;
+    port = 53720;
   in {
     # Open ports
     firewall = {
       allowedUDPPorts = [port];
     };
 
-    wireguard.interfaces.wg0 = {
-      # Determines the IP address and subnet of the server's end of the tunnel interface.
-      ips = ["10.9.7.2/24"];
+    wg-quick.interfaces = {
+      wg0 = {
+        address = ["10.9.7.2/24"];
 
-      # The port that WireGuard listens to. Must be accessible by the client.
-      listenPort = port;
+        dns = ["192.168.1.101"];
 
-      privateKeyFile = "/home/andres/wireguard-keys/private";
+        privateKeyFile = "/home/andres/wireguard-keys/private";
 
-      peers = [
-        {
-          name = "server";
-          publicKey = "4cxMtehccXYPILDgrvVc+/neazpgY361Z7fsURDjxHQ=";
-          allowedIPs = ["10.9.7.1/32"];
-          endpoint = "95.246.218.120:51820";
-          persistentKeepalive = 25;
-        }
-      ];
+        listenPort = port;
+
+        peers = [
+          {
+            # name = "server";
+            publicKey = "jQWhJHsCIT5THzRu0vphJ5kbQv8UVqgj9Orrgv/68gk=";
+            # allowedIPs = ["10.9.7.1/32"];
+            allowedIPs = ["0.0.0.0/0"];
+            endpoint = "212.216.136.157:${builtins.toString port}";
+            persistentKeepalive = 25;
+          }
+        ];
+      };
     };
   };
 }
