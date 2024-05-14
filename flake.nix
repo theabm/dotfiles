@@ -54,27 +54,6 @@
           }
         ];
       };
-
-      franky = nixpkgs.lib.nixosSystem {
-        inherit system;
-
-        modules = [
-          ./nixos/server/configuration.nix
-
-          home-manager.nixosModules.home-manager
-
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.andres.imports = [
-                ./home/common
-                nixvim.homeManagerModules.nixvim
-              ];
-            };
-          }
-        ];
-      };
     };
   };
 }
