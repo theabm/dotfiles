@@ -50,7 +50,17 @@ in {
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    dns = "none";
+  };
+
+  # look at encrypted DNS for nixOS wiki
+  networking = {
+    nameservers = ["127.0.0.1" "192.168.1.101"];
+  };
+  # this needs to be set to false for above as well
+  services.resolved.enable = false;
 
   # Set your time zone.
   time.timeZone = "Europe/Rome";
