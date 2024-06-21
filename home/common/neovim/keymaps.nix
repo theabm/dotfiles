@@ -10,8 +10,7 @@
       {
         mode = "n";
         key = "<leader>pv";
-        action = "vim.cmd.Ex";
-        lua = true;
+        action.__raw = "vim.cmd.Ex";
       }
       {
         mode = "n";
@@ -106,26 +105,22 @@
       {
         mode = "x";
         key = "<leader>p";
-        action = "[[\"_dP]]";
-        lua = true;
+        action.__raw = "[[\"_dP]]";
       }
       {
         mode = ["n" "v"];
         key = "<leader>y";
-        action = "[[\"+y]]";
-        lua = true;
+        action.__raw = "[[\"+y]]";
       }
       {
         mode = "n";
         key = "<leader>Y";
-        action = "[[\"+Y]]";
-        lua = true;
+        action.__raw = "[[\"+Y]]";
       }
       {
         mode = ["n" "v"];
         key = "<leader>d";
-        action = "[[\"_d]]";
-        lua = true;
+        action.__raw = "[[\"_d]]";
       }
       {
         mode = "n";
@@ -135,14 +130,12 @@
       {
         mode = "n";
         key = "<leader>fc";
-        action = "vim.lsp.buf.format";
-        lua = true;
+        action.__raw = "vim.lsp.buf.format";
       }
       {
         mode = "n";
         key = "<leader>s";
-        action = "[[:%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>]]";
-        lua = true;
+        action.__raw = "[[:%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>]]";
       }
       {
         mode = "n";

@@ -31,7 +31,7 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./wireguard.nix
+    # ./wireguard.nix
   ];
 
   # Bootloader.
@@ -52,15 +52,15 @@ in {
   # Enable networking
   networking.networkmanager = {
     enable = true;
-    dns = "none";
+    # dns = "none";
   };
 
   # look at encrypted DNS for nixOS wiki
-  networking = {
-    nameservers = ["127.0.0.1" "192.168.1.101"];
-  };
+  # networking = {
+  #   nameservers = ["127.0.0.1" "192.168.1.101"];
+  # };
   # this needs to be set to false for above as well
-  services.resolved.enable = false;
+  # services.resolved.enable = false;
 
   # Set your time zone.
   time.timeZone = "Europe/Rome";
@@ -137,9 +137,9 @@ in {
   environment.systemPackages = with pkgs; [
     wget
     kitty
-    mako
-    swww
-    rofi-wayland
+    # mako
+    # swww
+    # rofi-wayland
     git
     networkmanagerapplet
     wlogout
@@ -160,6 +160,7 @@ in {
     bazecor
     signal-desktop
     wireguard-tools
+    vlc
   ];
 
   virtualisation = {
