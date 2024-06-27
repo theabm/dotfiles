@@ -1,14 +1,14 @@
 {
   programs.nixvim = {
     files."after/ftplugin/norg.lua" = {
-    localOpts = {
-      # needed to hide @code @end tags
-      conceallevel = 3;
-    };
-    opts = {
-      # consistency with initial setup before changing to 100
-      colorcolumn = "80";
-    };
+      localOpts = {
+        # needed to hide @code @end tags
+        conceallevel = 3;
+      };
+      opts = {
+        # consistency with initial setup before changing to 100
+        colorcolumn = "80";
+      };
     };
 
     plugins = {
@@ -22,14 +22,14 @@
               icon_preset = "diamond";
               icons = {
                 code_block = {
-                # If true will only dim the content of the code block (without the @code and @end 
-                # lines), not the entirety of the code block itself.
+                  # If true will only dim the content of the code block (without the @code and @end
+                  # lines), not the entirety of the code block itself.
                   content_only = true;
                   # How wide the code block should be (default: "fullwidth")
                   width = "content";
                   # conceal @code and @end
                   conceal = true;
-                  # padding of dimmed code block 
+                  # padding of dimmed code block
                   padding = {
                     left = 0;
                     # increase right padding for "nicer" look
@@ -38,7 +38,7 @@
                   # make the dimming the same style as your cursorline.
                   highlight = "CursorLine";
                 };
-                # make the horizontal delimiter line the same length as 
+                # make the horizontal delimiter line the same length as
                 # neovims textwidth
                 delimiter.horizontal_line.right = "textwidth";
               };
