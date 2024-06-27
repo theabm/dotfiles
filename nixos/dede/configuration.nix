@@ -4,8 +4,10 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: let
+  system = "x86_64-linux";
   sddm_theme = let
     image = pkgs.fetchurl {
       url = "https://github.com/theabm/wallpapers/blob/main/one-piece-nika-moon.jpg?raw=true";
@@ -38,9 +40,9 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages;
+  # boot.kernelPackages = pkgs.linuxPackages;
 
   boot.initrd.luks.devices."luks-899e1d08-30b0-422d-a760-389d75acadf2".device = "/dev/disk/by-uuid/899e1d08-30b0-422d-a760-389d75acadf2";
   networking.hostName = "dede"; # Define your hostname.
@@ -116,6 +118,7 @@ in {
   };
   # enable blueman to configure bluetooth
   services.blueman.enable = true;
+  hardware.enableAllFirmware = true;
 
   # set fish as default shell.
   programs.fish.enable = true;
@@ -161,6 +164,7 @@ in {
     signal-desktop
     wireguard-tools
     vlc
+    inputs.agenix.packages.${system}.default 
   ];
 
   virtualisation = {
@@ -187,10 +191,9 @@ in {
     xdgOpenUsePortal = true;
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
   services.xserver.videoDrivers = ["nvidia"];
 
