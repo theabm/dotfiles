@@ -18,6 +18,11 @@
       url = "github:nvim-neorg/nixpkgs-neorg-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -26,8 +31,9 @@
     home-manager,
     nixvim,
     neorg-overlay,
+    agenix,
     ...
-  }: let
+  } @ inputs: let
     system = "x86_64-linux";
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
@@ -36,8 +42,12 @@
       dede = nixpkgs.lib.nixosSystem {
         inherit system;
 
+        specialArgs = {inherit inputs;};
+
         modules = [
           ./nixos/dede/configuration.nix
+
+          agenix.nixosModules.default
 
           home-manager.nixosModules.home-manager
 
