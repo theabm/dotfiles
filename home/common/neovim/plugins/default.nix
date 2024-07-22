@@ -5,7 +5,7 @@
     ./harpoon.nix
     ./telescope.nix
     ./neorg.nix
-    ./hardtime.nix
+    # ./hardtime.nix
     ./treesitter.nix
   ];
 
