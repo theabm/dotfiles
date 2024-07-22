@@ -100,7 +100,7 @@ in {
   console.keyMap = "it2";
 
   # Enable sound with pipewire.
-  sound.enable = false;
+  # sound.enable = false;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -164,7 +164,7 @@ in {
     signal-desktop
     wireguard-tools
     vlc
-    inputs.agenix.packages.${system}.default 
+    inputs.agenix.packages.${system}.default
   ];
 
   virtualisation = {
