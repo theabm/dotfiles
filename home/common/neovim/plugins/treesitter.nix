@@ -4,7 +4,14 @@
       enable = true;
       nixvimInjections = true;
       folding = true;
-      indent = true;
+      settings = {
+        highlight = {
+          enable = true;
+        };
+        indent = {
+          enable = true;
+        };
+      };
     };
   };
 }
