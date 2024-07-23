@@ -102,11 +102,12 @@
         key = "<C-Right>";
         action = ":vertical resize +2<CR>";
       }
-      {
-        mode = "x";
-        key = "<leader>p";
-        action.__raw = "[[\"_dP]]";
-      }
+      # Not needed! use Shift p instead to achieve same effect.
+      # {
+      #   mode = "x";
+      #   key = "<leader>p";
+      #   action.__raw = "[[\"_dP]]";
+      # }
       {
         mode = ["n" "v"];
         key = "<leader>y";
