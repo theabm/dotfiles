@@ -14,23 +14,23 @@
     clipboard.providers.wl-copy.enable = true;
 
     # color scheme
-    colorschemes.tokyonight = {
-      enable = true;
-      settings = {
-        style = "night";
-      };
-    };
-
-    # cyberdream colorscheme
-    # colorschemes.cyberdream = {
+    # colorschemes.tokyonight = {
     #   enable = true;
     #   settings = {
-    #     transparent = true;
-    #     italic_comments = true;
-    #     hide_fillchars = true;
-    #     borderless_telescope = true;
-    #     terminal_colors = true;
+    #     style = "night";
     #   };
     # };
+
+    # cyberdream colorscheme
+    colorschemes.cyberdream = {
+      enable = true;
+      settings = {
+        transparent = true;
+        italic_comments = true;
+        hide_fillchars = true;
+        borderless_telescope = true;
+        terminal_colors = true;
+      };
+    };
   };
 }
