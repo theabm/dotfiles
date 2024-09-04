@@ -10,7 +10,8 @@
       {
         mode = "n";
         key = "<leader>pv";
-        action.__raw = "vim.cmd.Ex";
+        # action.__raw = "vim.cmd.Ex";
+        action = ":Oil .<CR>";
       }
       {
         mode = "n";

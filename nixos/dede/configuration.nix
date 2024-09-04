@@ -176,6 +176,10 @@ in {
     };
   };
 
+  # programs.steam = {
+  #   enable = true;
+  # };
+
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
 

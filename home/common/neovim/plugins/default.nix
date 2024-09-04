@@ -20,5 +20,7 @@
     lualine.enable = true;
     tagbar.enable = true;
     leap.enable = true;
+    oil.enable = true;
+    surround.enable = true;
   };
 }
