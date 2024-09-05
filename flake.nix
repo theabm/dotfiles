@@ -64,6 +64,32 @@
           }
         ];
       };
+
+      inria = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        specialArgs = {inherit inputs;};
+
+        modules = [
+          ./nixos/inria/configuration.nix
+
+          agenix.nixosModules.default
+
+          home-manager.nixosModules.home-manager
+
+          {
+            nixpkgs.overlays = [neorg-overlay.overlays.default];
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.andres.imports = [
+                ./home/common
+                nixvim.homeManagerModules.nixvim
+              ];
+            };
+          }
+        ];
+      };
     };
   };
 }
