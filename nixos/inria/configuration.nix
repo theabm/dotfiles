@@ -82,6 +82,13 @@ in {
     #media-session.enable = true;
   };
 
+  hardware = {
+    # enables support for Bluetooth
+    bluetooth.enable = true;
+    # powers up the default Bluetooth controller on boot
+    bluetooth.powerOnBoot = true;
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -103,6 +110,7 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    thunderbird
     openconnect
     wget
     kitty
