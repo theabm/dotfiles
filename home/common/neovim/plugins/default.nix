@@ -20,7 +20,18 @@
     lualine.enable = true;
     tagbar.enable = true;
     leap.enable = true;
-    oil.enable = true;
+    oil = {
+      enable = true;
+      settings = {
+        skip_confirm_for_simple_edits = true;
+        prompt_save_on_select_new_entry = false;
+        watch_for_changes = true;
+        view_options = {
+          show_hidden = true;
+          natural_order = false;
+        };
+      };
+    };
     surround.enable = true;
   };
 }

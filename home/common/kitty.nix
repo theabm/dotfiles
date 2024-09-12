@@ -7,7 +7,7 @@
       confirm_os_window_close = 0;
     };
     extraConfig = ''
-      background_opacity 0.7
+      background_opacity 1.0
     '';
     shellIntegration.enableFishIntegration = true;
   };
