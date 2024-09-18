@@ -159,6 +159,7 @@ in {
     wireguard-tools
     vlc
     inputs.agenix.packages.${system}.default
+    openconnect
   ];
 
   virtualisation = {
