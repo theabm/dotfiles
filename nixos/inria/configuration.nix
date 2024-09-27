@@ -109,6 +109,9 @@ in {
     nvtopPackages.full
     bazecor
     signal-desktop
+    slack
+    mattermost-desktop
+    solaar
   ];
 
   programs.fish.enable = true;
