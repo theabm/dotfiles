@@ -12,6 +12,7 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../common
   ];
 
   # Bootloader.
@@ -54,26 +55,6 @@ in {
     };
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  hardware = {
-    # enables support for Bluetooth
-    bluetooth.enable = true;
-    # powers up the default Bluetooth controller on boot
-    bluetooth.powerOnBoot = true;
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andres = {
     isNormalUser = true;
@@ -84,61 +65,13 @@ in {
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
-    thunderbird
-    openconnect
-    wget
-    kitty
-    git
-    networkmanagerapplet
-    lshw
-    zip
-    rustup
-    zellij
-    bat
-    ripgrep
-    zathura
-    feh
     zotero
-    nvtopPackages.full
     bazecor
-    signal-desktop
     slack
     mattermost-desktop
     solaar
   ];
 
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
-
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
-
-  virtualisation.docker.enable = true;
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["Hack"];})
-    font-awesome
-  ];
-
   system.stateVersion = "24.05"; # Did you read the comment?
-  nix = {
-    settings = {
-      experimental-features = ["nix-command" "flakes"];
-      max-jobs = "auto";
-      auto-optimise-store = true;
-      trusted-users = ["root" "andres"];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
 }

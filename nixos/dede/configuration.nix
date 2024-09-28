@@ -8,32 +8,12 @@
   ...
 }: let
   system = "x86_64-linux";
-  sddm_theme = let
-    image = pkgs.fetchurl {
-      url = "https://github.com/theabm/wallpapers/blob/main/one-piece-nika-moon.jpg?raw=true";
-      sha256 = "sha256-MDznlZFHT+GjpD6TuUNYW+Us3Us7Hssnieiqx5OIIhc=";
-    };
-  in
-    pkgs.sddm-chili-theme.overrideAttrs {
-      postInstall = ''
-        mkdir -p $out/share/sddm/themes/chili
-
-        mv * $out/share/sddm/themes/chili/
-
-        cd $out/share/sddm/themes/chili/
-
-        rm assets/background.jpg
-
-        cat ${image} >> tmp.txt
-
-        cp -r ${image} $out/share/sddm/themes/chili/assets/background.jpg
-      '';
-    };
 in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # ./wireguard.nix
+    ../common
   ];
 
   # Bootloader.
@@ -47,12 +27,7 @@ in {
   boot.initrd.luks.devices."luks-899e1d08-30b0-422d-a760-389d75acadf2".device = "/dev/disk/by-uuid/899e1d08-30b0-422d-a760-389d75acadf2";
   networking.hostName = "dede"; # Define your hostname.
 
-  # Enable networking
-  networking.networkmanager = {
-    enable = true;
-    # dns = "none";
-  };
-
+  # plays with DNS option in networking. Look at common/default.nix
   # look at encrypted DNS for nixOS wiki
   # networking = {
   #   nameservers = ["127.0.0.1" "192.168.1.101"];
@@ -87,37 +62,8 @@ in {
     };
   };
 
-  services.displayManager.sddm = {
-    enable = true;
-    theme = "${sddm_theme}/share/sddm/themes/chili";
-  };
-
   # Configure console keymap
   console.keyMap = "it2";
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  hardware = {
-    # enables support for Bluetooth
-    bluetooth.enable = true;
-    # powers up the default Bluetooth controller on boot
-    bluetooth.powerOnBoot = true;
-  };
-  # enable blueman to configure bluetooth
-  services.blueman.enable = true;
-  hardware.enableAllFirmware = true;
-
-  # set fish as default shell.
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andres = {
@@ -127,59 +73,24 @@ in {
     packages = [];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget
-    kitty
-    # mako
-    # swww
-    # rofi-wayland
-    git
-    networkmanagerapplet
-    wlogout
-    lshw
-    zip
-    pywal
     rustup
     zellij
-    bat
-    ripgrep
     zathura
     feh
-    sddm_theme
     zotero
-    firefox
-    nvtopPackages.full
-    bazecor
     signal-desktop
     wireguard-tools
     vlc
-    inputs.agenix.packages.${system}.default
-    openconnect
-  ];
-
-  virtualisation = {
-    podman = {
-      enable = true;
-    };
-    docker = {
-      enable = true;
-    };
-  };
-
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["Hack"];})
-    font-awesome
+    bazecor
   ];
 
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+  };
 
   xdg.portal = {
     enable = true;
@@ -223,18 +134,4 @@ in {
   };
 
   system.stateVersion = "23.11"; # Did you read the comment?
-
-  nix = {
-    settings = {
-      experimental-features = ["nix-command" "flakes"];
-      max-jobs = "auto";
-      auto-optimise-store = true;
-      trusted-users = ["root" "andres"];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
 }
