@@ -57,6 +57,7 @@
             completion = true;
           };
         };
+        clangd.enable = true;
 
         # lua lsp server
         lua-ls.enable = true;

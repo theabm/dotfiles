@@ -1,14 +1,11 @@
 {
-  config, 
+  config,
   pkgs,
   inputs,
   ...
-}:  
-let
+}: let
   system = "x86_64-linux";
-in
-{
-
+in {
   # Enable networking
   networking.networkmanager = {
     enable = true;
@@ -77,7 +74,7 @@ in
     bat
     ripgrep
     firefox
-    nvtopPackages.full
+    # nvtopPackages.full
     inputs.agenix.packages.${system}.default
   ];
 
@@ -95,5 +92,4 @@ in
       options = "--delete-older-than 7d";
     };
   };
-
 }
