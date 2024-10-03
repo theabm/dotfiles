@@ -6,6 +6,10 @@
 }: let
   system = "x86_64-linux";
 in {
+  imports = [
+    ./agenix.nix
+  ];
+
   # Enable networking
   networking.networkmanager = {
     enable = true;
