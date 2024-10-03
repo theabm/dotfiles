@@ -13,6 +13,7 @@
     indent-blankline.enable = true;
     markdown-preview.enable = true;
     nvim-autopairs.enable = true;
+    web-devicons.enable = true;
 
     luasnip.enable = true;
     comment.enable = true;
@@ -32,6 +33,6 @@
         };
       };
     };
-    surround.enable = true;
+    vim-surround.enable = true;
   };
 }
