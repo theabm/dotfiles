@@ -80,6 +80,7 @@ in {
     firefox
     # nvtopPackages.full
     inputs.agenix.packages.${system}.default
+    sshfs
   ];
 
   # nix configuration settings
