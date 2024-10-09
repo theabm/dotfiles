@@ -81,6 +81,8 @@ in {
     # nvtopPackages.full
     inputs.agenix.packages.${system}.default
     sshfs
+    emacs
+    fd
   ];
 
   # nix configuration settings
