@@ -14,6 +14,7 @@ in {
     ./hardware-configuration.nix
     # ./wireguard.nix
     ../common
+    ../system/plasma
   ];
 
   # Bootloader.
@@ -91,11 +92,6 @@ in {
     vlc
     bazecor
   ];
-
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-  };
 
   xdg.portal = {
     enable = true;
