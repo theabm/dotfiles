@@ -12,9 +12,16 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+    # utilities
     # ./wireguard.nix
+
+    # common options imported for all configurations
     ../common
-    ../system/plasma
+
+    # system options
+    # ../system/plasma
+    ../system/hyprland
   ];
 
   # Bootloader.
@@ -93,11 +100,7 @@ in {
     bazecor
   ];
 
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-  };
-
+  # new option for opengl
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -106,6 +109,7 @@ in {
 
   hardware.nvidia = {
     modesetting.enable = true;
+    # hyprland suggests setting this to true -- mkForce in hyprland module?
     powerManagement.enable = false;
     powerManagement.finegrained = false;
 
