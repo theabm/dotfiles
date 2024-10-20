@@ -1,0 +1,28 @@
+{
+
+    "custom/launcher":{
+        "format": " ",
+        "on-click": "rofi -show drun",
+        "on-click-right": "killall rofi"
+    },
+
+    "cpu": {
+        "interval": 15,
+        "format": "  {}%",
+        "max-length": 10,
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "  {}%",
+        "max-length": 10
+    },
+
+	"network": {
+		"format-wifi": "",
+		"format-ethernet": "",
+		"tooltip-format": "{essid} ({signalStrength}%)",
+		"format-disconnected": "⚠",
+	},
+
+}

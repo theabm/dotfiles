@@ -1,0 +1,43 @@
+{
+	"backlight": {
+		"tooltip": false,
+		"format": " {}%",
+		"interval":1,
+		"on-scroll-up": "brightnessctl set 5%+",
+		"on-scroll-down": "brightnessctl set 5%-"
+	},
+
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon}   {volume}%",
+		"format-muted": "{icon}   {volume}%",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+
+    "clock": {
+        "interval": 60,
+        "format": " {:%H:%M}",
+        "max-length": 25
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20,
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+    },
+
+    "custom/power":{
+        "format": " ",
+        "on-click": "wlogout",
+    },
+
+}
