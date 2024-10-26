@@ -72,7 +72,6 @@ in {
     wget
     kitty
     git
-    networkmanagerapplet
     lshw
     zip
     bat
