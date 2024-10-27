@@ -6,8 +6,8 @@
       # lspServersToEnable = "all";
       lspServersToEnable = [
         "efm"
-        "rust-analyzer"
-        "lua-ls"
+        "rust_analyzer"
+        "lua_ls"
       ];
     };
 
@@ -60,13 +60,16 @@
         clangd.enable = true;
 
         # lua lsp server
-        lua-ls.enable = true;
+        lua_ls.enable = true;
 
         # nix language server
-        nil-ls.enable = true;
+        nil_ls.enable = true;
 
         # haskell language server
-        hls. enable = true;
+        hls = {
+          enable = true;
+          installGhc = true;
+        };
 
         # python ruff -- NOTE: this is different from ruff-lsp
         # which is the old server implementation written in python.
@@ -80,7 +83,7 @@
         # such that it is compatible with the version I select.
         # Therefore, I disable automatic installation for all of these.
         # TODO switch to declarative config
-        rust-analyzer = {
+        rust_analyzer = {
           enable = true;
           installCargo = false;
           installRustc = false;

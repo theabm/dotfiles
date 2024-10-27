@@ -89,7 +89,6 @@ in {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     bat
-    rustup
     zellij
     zathura
     feh

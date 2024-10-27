@@ -69,6 +69,8 @@ in {
   environment.systemPackages = with pkgs; [
     thunderbird
     openconnect
+    rustup
+    gcc
     wget
     kitty
     git
@@ -77,7 +79,6 @@ in {
     bat
     ripgrep
     firefox
-    # nvtopPackages.full
     inputs.agenix.packages.${system}.default
     sshfs
     emacs
