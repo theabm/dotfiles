@@ -10,7 +10,7 @@
         "~/.config/waybar/modules-right.json"
     ],
 
-	"modules-left": ["custom/launcher", "cpu", "memory", "network"],
+	"modules-left": ["custom/launcher", "cpu", "memory", "network", "tray"],
 	"modules-center": ["hyprland/workspaces"],
 	"modules-right": ["backlight","pulseaudio","clock", "battery", "custom/power"],
 }

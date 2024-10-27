@@ -37,5 +37,6 @@ in {
     wlogout
     playerctl
     brightnessctl
+    networkmanagerapplet
   ];
 }
