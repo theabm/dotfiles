@@ -15,6 +15,8 @@
     nvim-autopairs.enable = true;
     web-devicons.enable = true;
 
+    nvim-colorizer.enable = true;
+
     luasnip.enable = true;
     comment.enable = true;
     gitsigns.enable = true;
