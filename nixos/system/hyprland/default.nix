@@ -38,5 +38,6 @@ in {
     playerctl
     brightnessctl
     networkmanagerapplet
+    wallust
   ];
 }
