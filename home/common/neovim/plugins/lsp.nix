@@ -77,6 +77,8 @@
         # written in rust so it is blazingly fast!
         ruff.enable = true;
 
+        pyright.enable = true;
+
         # Rust language server
         # NOTE: At the moment, I include rustup in the system packages.
         # rustup takes care of installing cargo, rustc, and rust-analyzer
