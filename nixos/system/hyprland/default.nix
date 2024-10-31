@@ -39,5 +39,7 @@ in {
     brightnessctl
     networkmanagerapplet
     wallust
+    fuzzel
+    libpng
   ];
 }

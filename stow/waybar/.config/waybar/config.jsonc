@@ -1,8 +1,8 @@
 {
 	"layer": "top",
 	// Using margin-bottom with a negative value in order to reduce the space between Hyprland window and waybar
-	// "margin-bottom": -10,
-	// "margin-top": 10,
+	"margin-bottom": 1,
+	"margin-top": 1,
 
     "include": [
         "~/.config/waybar/modules-left.json",

@@ -1,6 +1,7 @@
 {
   home.sessionPath = [
     "$HOME/.config/emacs/bin"
+    "$HOME/.cargo/bin"
   ];
   # Settings for fish shell
   programs = {

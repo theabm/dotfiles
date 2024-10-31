@@ -1,11 +1,11 @@
+@import url("colors.css");
+
 * {
 	border: none;
 	border-radius: 10px;
 	font-family: "JetbrainsMono Nerd Font" ;
 	font-size: 17px;
 	min-height: 10px;
-    /* margin-top: 5px; */
-    /* margin-bottom: 5px; */
 }
 
 window#waybar {
@@ -14,17 +14,16 @@ window#waybar {
 	padding-right: 10px;
 	border-radius: 10px;
 	transition: none;
-    color: transparent;
-	background: transparent;
+	background: @background;
 }
 
 tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 1px solid orange;
+  background: @background;
+  border: 1px solid @color14;
 }
 
 tooltip label {
-  color: white;
+  color: @color15;
 }
 
 /* HYPRLAND */
@@ -38,8 +37,8 @@ tooltip label {
 
 #workspaces button {
 	transition: none;
-    /* light blue of inactive workspaces */
-	color: #B5E8E0;
+    /* color of inactive but populated workspaces */
+	color: @color2;
 	background: transparent;
 	font-size: 16px;
 	border-radius: 2px;
@@ -47,6 +46,7 @@ tooltip label {
 
 #workspaces button.empty {
 	transition: none;
+    /* color of workspaces that are inactive and empty */
 	color: gray;
 	background: transparent;
 	font-size: 16px;
@@ -54,10 +54,10 @@ tooltip label {
 }
 
 #workspaces button.active {
-    /* green of currently active workspace */
-	color: #ABE9B3;
-    border-top: 2px solid #ABE9B3;
-    border-bottom: 2px solid #ABE9B3;
+    /* color of currently active workspace with line above and below */
+	color: @color3;
+    border-top: 2px solid @color3;
+    border-bottom: 2px solid @color3;
 }
 
 #workspaces button.special {
@@ -68,17 +68,17 @@ tooltip label {
 }
 
 #workspaces button:hover {
-    /* the color of all workspaces when I hover */
+    /* the color of workspaces when hovering */
 	transition: none;
 	box-shadow: inherit;
 	text-shadow: inherit;
-    color: #5c34eb;
-	border-color: #5c34eb;
+    color: @color4;
+	border-color: @color4;
 }
 
 #workspaces button.active:hover {
     /* the color of the active workspace when I hover */
-    color: #5c34eb;
+    color: @color4;
 }
 
 #network {
@@ -89,8 +89,8 @@ tooltip label {
 	margin-bottom: 4px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #bd93f9;
+	color: @color15;
+	background: @color2;
 }
 
 #pulseaudio {
@@ -101,8 +101,8 @@ tooltip label {
 	margin-bottom: 4px;
 	border-radius: 10px;
 	transition: none;
-	color: #1A1826;
-	background: #FAE3B0;
+	color: @color15;
+	background: @color2;
 }
 
 #battery {
@@ -113,18 +113,18 @@ tooltip label {
 	margin-bottom: 4px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #B5E8E0;
+	color: @color15;
+	background: @color2;
 }
 
 #battery.charging, #battery.plugged {
-	color: #161320;
-    background-color: #B5E8E0;
+	color: @color15;
+    background-color: @color2;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #B5E8E0;
-    color: #161320;
+    background-color: red;
+    color: black;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -140,8 +140,8 @@ tooltip label {
 	margin-bottom: 4px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #F8BD96;
+	color: @color15;
+	background: @color2;
 }
 #clock {
 	margin-top: 6px;
@@ -151,9 +151,8 @@ tooltip label {
 	margin-bottom: 4px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #ABE9B3;
-	/*background: #1A1826;*/
+	color: @color15;
+	background: @color2;
 }
 
 #memory {
@@ -164,8 +163,8 @@ tooltip label {
 	padding-right: 10px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #DDB6F2;
+	color: @color15;
+	background: @color2;
 }
 
 #cpu {
@@ -176,8 +175,8 @@ tooltip label {
 	padding-right: 10px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #96CDFB;
+	color: @color15;
+	background: @color2;
 }
 
 #custom-launcher {
@@ -190,7 +189,10 @@ tooltip label {
 	border-radius: 10px;
 	transition: none;
     color: #89DCEB;
-    background: #161320;
+    background: transparent;
+	/* border-color: @color2; */
+    border: 2px solid @color2;
+    
 }
 
 #custom-power {
@@ -203,8 +205,8 @@ tooltip label {
 	margin-bottom: 4px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #F28FAD;
+	color: @color15;
+	background: @color2;
 }
 
 #tray {
@@ -215,8 +217,7 @@ tooltip label {
 	margin-bottom: 4px;
 	border-radius: 10px;
 	transition: none;
-	color: #1A1826;
-	background: #FAE3B0;
+	background: @color2;
 }
 
 #tray menu {
@@ -227,6 +228,6 @@ tooltip label {
 	margin-bottom: 4px;
 	border-radius: 10px;
 	transition: none;
-	color: #1A1826;
-	background: #FAE3B0;
+	color: @foreground;
+	background: @color3;
 }

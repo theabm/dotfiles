@@ -83,6 +83,8 @@ in {
     sshfs
     emacs
     fd
+    stow
+    tree
   ];
 
   # nix configuration settings
