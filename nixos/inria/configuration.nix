@@ -74,6 +74,7 @@ in {
     slack
     mattermost-desktop
     solaar
+    vscode
   ];
 
   system.stateVersion = "24.05"; # Did you read the comment?
