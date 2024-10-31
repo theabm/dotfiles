@@ -17,6 +17,11 @@
 
     nvim-colorizer.enable = true;
 
+    treesitter-context = {
+      enable = true;
+      settings.enable = true;
+    };
+
     luasnip.enable = true;
     comment.enable = true;
     gitsigns.enable = true;
