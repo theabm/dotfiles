@@ -85,6 +85,7 @@ in {
     fd
     stow
     tree
+    wormhole-rs
   ];
 
   # nix configuration settings

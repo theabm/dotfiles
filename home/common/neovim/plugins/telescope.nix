@@ -10,6 +10,11 @@
         "<leader>qf" = "quickfix";
         "<leader>fd" = "diagnostics";
       };
+      settings.pickers = {
+        "find_files" = {
+          hidden = true;
+        };
+      };
     };
   };
 }
