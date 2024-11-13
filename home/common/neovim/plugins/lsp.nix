@@ -29,17 +29,21 @@
         silent = true;
         # keymaps for vim.diagnostic.<action>
         diagnostic = {
-          "<leader>j" = "goto_next";
+          "<leader>dn" = "goto_next";
+          "<leader>do" = "open_float";
         };
 
         # keymaps for vim.lsp.buf.<action>
         lspBuf = {
-          gd = "definition";
-          gD = "references";
-          gt = "type_definition";
-          gi = "implementation";
           K = "hover";
-          "<leader>rn" = "rename";
+          gd = "definition";
+          gD = "declaration";
+          gi = "implementation";
+          gt = "type_definition";
+          gr = "references";
+          gs = "signature_help";
+          "<leader>lr" = "rename";
+          "<leader>la" = "code_action";
         };
       };
 
