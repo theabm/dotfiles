@@ -86,6 +86,8 @@ in {
     stow
     tree
     magic-wormhole-rs
+    pstree
+    rclone
   ];
 
   # nix configuration settings
