@@ -66,14 +66,9 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    alacritty
     zellij
-    tmux
-    zotero
-    bazecor
     slack
     mattermost-desktop
-    solaar
     vscode
   ];
 

@@ -88,6 +88,8 @@ in {
     magic-wormhole-rs
     pstree
     rclone
+    zotero
+    bazecor
   ];
 
   # nix configuration settings
