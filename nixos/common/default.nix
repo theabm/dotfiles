@@ -59,8 +59,7 @@ in {
   programs.neovim.defaultEditor = true;
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["Hack"];})
-    font-awesome
+    nerd-fonts.hack
   ];
 
   # Install firefox.
