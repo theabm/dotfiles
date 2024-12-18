@@ -97,6 +97,7 @@ in {
     wireguard-tools
     vlc
     bazecor
+    ollama-cuda
   ];
 
   # new option for opengl
@@ -108,7 +109,6 @@ in {
 
   hardware.nvidia = {
     modesetting.enable = true;
-    # hyprland suggests setting this to true -- mkForce in hyprland module?
     powerManagement.enable = false;
     powerManagement.finegrained = false;
 

@@ -15,7 +15,7 @@
     nvim-autopairs.enable = true;
     web-devicons.enable = true;
 
-    nvim-colorizer.enable = true;
+    colorizer.enable = true;
 
     treesitter-context = {
       enable = true;
