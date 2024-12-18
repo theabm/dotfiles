@@ -8,6 +8,12 @@
 in {
   services.displayManager.sddm = {
     enable = true;
+    settings = {
+      General = {
+        DefaultSession = "hyprland.desktop";
+      };
+    };
+    theme = "sddm-astronaut-theme";
   };
 
   programs.hyprland = {
@@ -24,6 +30,7 @@ in {
   };
 
   qt.enable = true;
+  programs.hyprlock.enable = true;
 
   environment.systemPackages = with pkgs; [
     kitty
@@ -41,5 +48,6 @@ in {
     wallust
     fuzzel
     libpng
+    sddm-astronaut
   ];
 }
