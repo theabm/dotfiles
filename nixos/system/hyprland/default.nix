@@ -6,15 +6,22 @@
 }: let
   system = "x86_64-linux";
 in {
-  services.displayManager.sddm = {
+  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.autoLogin = {
     enable = true;
-    settings = {
-      General = {
-        DefaultSession = "hyprland.desktop";
-      };
-    };
-    theme = "sddm-astronaut-theme";
+    user = "andres";
   };
+
+  # sddm is shit - prefer gdm
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   settings = {
+  #     General = {
+  #       DefaultSession = "hyprland.desktop";
+  #     };
+  #   };
+  #   theme = "sugar-dark";
+  # };
 
   programs.hyprland = {
     enable = true;
@@ -48,6 +55,5 @@ in {
     wallust
     fuzzel
     libpng
-    sddm-astronaut
   ];
 }
