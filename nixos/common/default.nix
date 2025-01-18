@@ -24,6 +24,7 @@ in {
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
 
   # bluetooth settings
@@ -89,6 +90,7 @@ in {
     rclone
     zotero
     bazecor
+    uv
   ];
 
   # nix configuration settings
