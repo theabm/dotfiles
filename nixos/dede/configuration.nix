@@ -20,8 +20,8 @@ in {
     ../common
 
     # system options
-    # ../system/plasma
-    ../system/hyprland
+    ../system/plasma
+    # ../system/hyprland
   ];
 
   # Bootloader.
@@ -77,7 +77,7 @@ in {
   users.users.andres = {
     isNormalUser = true;
     description = "andres";
-    extraGroups = ["networkmanager" "wheel" "uucp" "dialout"];
+    extraGroups = ["networkmanager" "wheel" "uucp" "dialout" "audio"];
     packages = [];
   };
 
@@ -100,6 +100,16 @@ in {
     vlc
     bazecor
     ollama-cuda
+    ardour
+  ];
+
+  security.pam.loginLimits = [
+    {
+      domain = "@audio";
+      item = "memlock";
+      type = "-";
+      value = "unlimited";
+    }
   ];
 
   # new option for opengl
