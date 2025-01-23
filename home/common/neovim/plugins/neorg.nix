@@ -4,6 +4,7 @@
       localOpts = {
         # needed to hide @code @end tags
         conceallevel = 3;
+        foldlevel = 1;
       };
       opts = {
         # consistency with initial setup before changing to 100
