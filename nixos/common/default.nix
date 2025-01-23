@@ -17,7 +17,7 @@ in {
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -67,6 +67,7 @@ in {
   programs.firefox.enable = true;
 
   environment.systemPackages = with pkgs; [
+    git-crypt
     thunderbird
     openconnect
     rustup
