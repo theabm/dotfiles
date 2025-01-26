@@ -101,6 +101,7 @@ in {
     bazecor
     ollama-cuda
     ardour
+    ente-auth
   ];
 
   security.pam.loginLimits = [
