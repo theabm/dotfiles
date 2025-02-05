@@ -67,6 +67,7 @@ in {
   programs.firefox.enable = true;
 
   environment.systemPackages = with pkgs; [
+    nixos-generators
     git-crypt
     thunderbird
     openconnect
