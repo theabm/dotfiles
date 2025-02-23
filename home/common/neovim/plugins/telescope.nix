@@ -7,8 +7,9 @@
         "<leader>fg" = "live_grep";
         "<leader>fb" = "buffers";
         "<leader>fm" = "marks";
-        "<leader>qf" = "quickfix";
+        "<leader>fq" = "quickfix";
         "<leader>fd" = "diagnostics";
+        "<leader>fl" = "current_buffer_fuzzy_find";
       };
       settings.pickers = {
         "find_files" = {
