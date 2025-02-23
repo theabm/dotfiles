@@ -17,33 +17,20 @@ in {
     # ./wireguard.nix
 
     # common options imported for all configurations
-    ../common
+    ../common/common.nix
+    ../common/common-laptop.nix
 
     # system options
     ../system/plasma
-    # ../system/hyprland
   ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "dede"; # Define your hostname.
+  networking.hostName = "dede"; 
 
-  # plays with DNS option in networking. Look at common/default.nix
-  # look at encrypted DNS for nixOS wiki
-  # networking = {
-  #   nameservers = ["127.0.0.1" "192.168.1.101"];
-  # };
-  # this needs to be set to false for above as well
-  # services.resolved.enable = false;
-
-  # Set your time zone.
   time.timeZone = "Europe/Rome";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "it_IT.UTF-8";
     LC_IDENTIFICATION = "it_IT.UTF-8";
@@ -56,7 +43,6 @@ in {
     LC_TIME = "it_IT.UTF-8";
   };
 
-  # Configure keymap in X11
   services.xserver = {
     enable = true;
     xkb = {
@@ -64,11 +50,8 @@ in {
       variant = "";
     };
   };
-
-  # Configure console keymap
   console.keyMap = "it2";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andres = {
     isNormalUser = true;
     description = "andres";
@@ -76,14 +59,10 @@ in {
     packages = [];
   };
 
-  # agenix settings
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKeJBx110sElXuAaPFghnMqBIBSNH58xHjng5NcenKSu";
   age.secrets."s1".rekeyFile = ./s1.age;
 
   programs.steam.enable = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     bat
     zellij
@@ -99,6 +78,7 @@ in {
     ente-auth
   ];
 
+  # used for ardour
   security.pam.loginLimits = [
     {
       domain = "@audio";

@@ -1,23 +1,20 @@
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    ../common/common.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "franky"; # Define your hostname.
-  networking.networkmanager.enable = true;
+  networking.hostName = "franky";
 
-  # Set your time zone.
   time.timeZone = "Europe/Paris";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "fr_FR.UTF-8";
     LC_IDENTIFICATION = "fr_FR.UTF-8";
@@ -33,43 +30,19 @@
   services.xserver.xkb = {
     layout = "us";
   };
-  console.useXkbConfig=true;
+  console.useXkbConfig = true;
 
   users.users.andres = {
     isNormalUser = true;
     description = "Andres";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [];
   };
-  security.sudo.wheelNeedsPassword= true;
-
-
+  security.sudo.wheelNeedsPassword = true;
   services.getty.autologinUser = "andres";
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
-    neovim 
-    git
   ];
 
-  services.openssh= {
-  	enable = true;
-	settings = {
-		#PasswordAuthentication=false;
-		KbdInteractiveAuthentication=false;
-	};
-  };
-
-  system.stateVersion = "24.11"; 
-
-  nix = {
-	settings = {
-		trusted-users = ["root"];
-		experimental-features = ["nix-command" "flakes"];
-
-	};
-
-  };
-
+  system.stateVersion = "24.11";
 }

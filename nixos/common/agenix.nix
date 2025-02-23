@@ -16,10 +16,4 @@
     localStorageDir = ../../secrets/${config.networking.hostName};
   };
 
-  # enable ssh server for agenix configuration.
-  # This is the public-private key pair I will use to decrypt secrets at build time.
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-  };
 }

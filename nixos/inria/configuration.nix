@@ -12,22 +12,16 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../common
+    ../common/common.nix
+    ../common/common-laptop.nix
   ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "inria"; # Define your hostname.
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
   time.timeZone = "Europe/Rome";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -42,11 +36,9 @@ in {
     LC_TIME = "it_IT.UTF-8";
   };
 
-  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  # Configure keymap in X11
   services.xserver = {
     enable = true;
     xkb = {
@@ -55,7 +47,6 @@ in {
     };
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andres = {
     isNormalUser = true;
     description = "Andres";
