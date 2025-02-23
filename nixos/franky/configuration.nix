@@ -1,67 +1,75 @@
+{ config, pkgs, ... }:
+
 {
-  config,
-  pkgs,
-  inputs,
-  ...
-}: let
-  system = "x86_64-linux";
-in {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+  imports =
+    [ 
+      ./hardware-configuration.nix
+    ];
 
-    # utilities
-    # ./wireguard.nix
-
-    # common options imported for all configurations
-    ../common
-
-    # system options
-    ../system/plasma
-  ];
-
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages;
-  networking.hostName = "franky";
-  time.timeZone = "Europe/Rome";
+  networking.hostName = "franky"; # Define your hostname.
+  networking.networkmanager.enable = true;
 
+  # Set your time zone.
+  time.timeZone = "Europe/Paris";
+
+  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "it_IT.UTF-8";
-    LC_IDENTIFICATION = "it_IT.UTF-8";
-    LC_MEASUREMENT = "it_IT.UTF-8";
-    LC_MONETARY = "it_IT.UTF-8";
-    LC_NAME = "it_IT.UTF-8";
-    LC_NUMERIC = "it_IT.UTF-8";
-    LC_PAPER = "it_IT.UTF-8";
-    LC_TELEPHONE = "it_IT.UTF-8";
-    LC_TIME = "it_IT.UTF-8";
+    LC_ADDRESS = "fr_FR.UTF-8";
+    LC_IDENTIFICATION = "fr_FR.UTF-8";
+    LC_MEASUREMENT = "fr_FR.UTF-8";
+    LC_MONETARY = "fr_FR.UTF-8";
+    LC_NAME = "fr_FR.UTF-8";
+    LC_NUMERIC = "fr_FR.UTF-8";
+    LC_PAPER = "fr_FR.UTF-8";
+    LC_TELEPHONE = "fr_FR.UTF-8";
+    LC_TIME = "fr_FR.UTF-8";
   };
 
-  # Configure keymap in X11
-  services.xserver = {
-    enable = true;
-    xkb = {
-      layout = "it";
-      variant = "";
-    };
+  services.xserver.xkb = {
+    layout = "us";
   };
-  # Configure console keymap
-  console.keyMap = "it2";
+  console.useXkbConfig=true;
 
   users.users.andres = {
     isNormalUser = true;
-    description = "andres";
-    extraGroups = ["networkmanager" "wheel"];
-    packages = [];
+    description = "Andres";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [];
   };
+  security.sudo.wheelNeedsPassword= true;
+
+
+  services.getty.autologinUser = "andres";
+
+  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    wireguard-tools
+    neovim 
+    git
   ];
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  services.openssh= {
+  	enable = true;
+	settings = {
+		#PasswordAuthentication=false;
+		KbdInteractiveAuthentication=false;
+	};
+  };
+
+  system.stateVersion = "24.11"; 
+
+  nix = {
+	settings = {
+		trusted-users = ["root"];
+		experimental-features = ["nix-command" "flakes"];
+
+	};
+
+  };
+
 }
