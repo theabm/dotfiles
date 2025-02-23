@@ -83,22 +83,7 @@
 
         modules = [
           ./nixos/franky/configuration.nix
-
           agenix.nixosModules.default
-
-          home-manager.nixosModules.home-manager
-
-          {
-            # nixpkgs.overlays = [neorg-overlay.overlays.default];
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.andres.imports = [
-                ./home/common
-                nixvim.homeManagerModules.nixvim
-              ];
-            };
-          }
         ];
       };
 
