@@ -27,7 +27,7 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "dede"; 
+  networking.hostName = "dede";
 
   time.timeZone = "Europe/Rome";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -70,7 +70,6 @@ in {
     feh
     zotero
     signal-desktop
-    wireguard-tools
     vlc
     bazecor
     ollama-cuda

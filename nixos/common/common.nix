@@ -38,6 +38,7 @@ in {
     bat
     ripgrep
     inputs.agenix.packages.${system}.default
+    wireguard-tools
     sshfs
     fd
     tree
