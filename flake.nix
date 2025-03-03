@@ -14,11 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # neorg-overlay = {
-    #   url = "github:nvim-neorg/nixpkgs-neorg-overlay";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +30,6 @@
     nixpkgs,
     home-manager,
     nixvim,
-    # neorg-overlay,
     agenix,
     agenix-rekey,
     ...
@@ -46,7 +40,7 @@
 
     agenix-rekey = agenix-rekey.configure {
       userFlake = self;
-      nodes = self.nixosConfigurations;
+      nixosConfigurations = self.nixosConfigurations;
     };
 
     nixosConfigurations = {
@@ -59,11 +53,10 @@
           ./nixos/dede/configuration.nix
 
           agenix.nixosModules.default
+          agenix-rekey.nixosModules.default
 
           home-manager.nixosModules.home-manager
-
           {
-            # nixpkgs.overlays = [neorg-overlay.overlays.default];
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -84,6 +77,7 @@
         modules = [
           ./nixos/franky/configuration.nix
           agenix.nixosModules.default
+          agenix-rekey.nixosModules.default
         ];
       };
 
@@ -96,11 +90,10 @@
           ./nixos/inria/configuration.nix
 
           agenix.nixosModules.default
+          agenix-rekey.nixosModules.default
 
           home-manager.nixosModules.home-manager
-
           {
-            # nixpkgs.overlays = [neorg-overlay.overlays.default];
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
