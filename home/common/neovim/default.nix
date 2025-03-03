@@ -28,7 +28,7 @@
         transparent = true;
         italic_comments = true;
         hide_fillchars = true;
-        borderless_telescope = false;
+        borderless_pickers = false;
         terminal_colors = true;
       };
     };
