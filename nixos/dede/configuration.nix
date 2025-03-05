@@ -14,7 +14,7 @@ in {
     ./hardware-configuration.nix
 
     # utilities
-    # ./wireguard.nix
+    # ../common/wireguard-server.nix
 
     # common options imported for all configurations
     ../common/common.nix
@@ -59,8 +59,19 @@ in {
     packages = [];
   };
 
-  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKeJBx110sElXuAaPFghnMqBIBSNH58xHjng5NcenKSu";
-  age.secrets."s1".rekeyFile = ./s1.age;
+  # define a secret
+  age.secrets = {
+    "wg-private" = {
+      file = ../../secrets/dede-wireguard-private.age;
+      mode = "640";
+      group = "systemd-network";
+    };
+    "wg-public" = {
+      file = ../../secrets/dede-wireguard-public.age;
+      mode = "640";
+      group = "systemd-network";
+    };
+  };
 
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [

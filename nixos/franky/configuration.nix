@@ -6,7 +6,6 @@
   imports = [
     ./hardware-configuration.nix
     ../common/common.nix
-    # ../common/wireguard-server.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

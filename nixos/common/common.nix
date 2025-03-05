@@ -7,7 +7,6 @@
   system = "x86_64-linux";
 in {
   imports = [
-    ./agenix.nix
   ];
 
   networking.networkmanager = {

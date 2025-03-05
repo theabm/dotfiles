@@ -34,23 +34,16 @@ in {
         };
         # wireguard config
         wireguardConfig = {
-          PrivateKeyFile = "/home/andres/wireguard/privatekey";
+          PrivateKeyFile = config.age.secrets."wg-private".path;
           FirewallMark = 2424;
           ListenPort = 51820;
           # RouteTable=200;
         };
         wireguardPeers = [
           {
-            PublicKey = "ZFhTIwcZmjMjJaYw2nLx4Q3baHeW33F+UGuu5yfzWBI=";
-            AllowedIPs = ["10.10.10.2/32"];
-            # Endpoint = "wg.dedes-dung-pile.com:51820";
-            PersistentKeepalive = 25;
-            # RouteTable = 200;
-          }
-          {
             PublicKey = "ICAgHCGpp5ZrWfj3NwPpNcHMbrfJI/0pyuAZ6+ElZDA=";
             AllowedIPs = ["10.10.10.3/32"];
-            # Endpoint = "wg.dedes-dung-pile.com:51820";
+            Endpoint = "37.171.205.60:51820";
             PersistentKeepalive = 25;
             # RouteTable = 200;
           }

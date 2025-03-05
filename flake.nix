@@ -18,11 +18,6 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    agenix-rekey = {
-      url = "github:oddlama/agenix-rekey";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -31,17 +26,11 @@
     home-manager,
     nixvim,
     agenix,
-    agenix-rekey,
     ...
   } @ inputs: let
     system = "x86_64-linux";
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-
-    agenix-rekey = agenix-rekey.configure {
-      userFlake = self;
-      nixosConfigurations = self.nixosConfigurations;
-    };
 
     nixosConfigurations = {
       dede = nixpkgs.lib.nixosSystem {
@@ -53,7 +42,6 @@
           ./nixos/dede/configuration.nix
 
           agenix.nixosModules.default
-          agenix-rekey.nixosModules.default
 
           home-manager.nixosModules.home-manager
           {
@@ -77,7 +65,6 @@
         modules = [
           ./nixos/franky/configuration.nix
           agenix.nixosModules.default
-          agenix-rekey.nixosModules.default
         ];
       };
 
@@ -90,7 +77,6 @@
           ./nixos/inria/configuration.nix
 
           agenix.nixosModules.default
-          agenix-rekey.nixosModules.default
 
           home-manager.nixosModules.home-manager
           {
