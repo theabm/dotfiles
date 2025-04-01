@@ -15,6 +15,11 @@
       }
       {
         mode = "n";
+        key = "<leader>pp";
+        action = "<CMD>Oil<CR>";
+      }
+      {
+        mode = "n";
         key = "Y";
         action = "y$";
       }
