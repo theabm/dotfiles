@@ -34,16 +34,6 @@
         action = ":m '<-2<CR>gv=gv";
       }
       {
-        mode = "n";
-        key = "<M-j>";
-        action = ":move+<CR>";
-      }
-      {
-        mode = "n";
-        key = "<M-k>";
-        action = ":move-2<CR>";
-      }
-      {
         mode = "v";
         key = "<TAB>";
         action = ">gv";
@@ -88,27 +78,9 @@
         key = "L";
         action = "<C-w>l";
       }
-      {
-        mode = "n";
-        key = "<C-Up>";
-        action = ":resize -2<CR>";
-      }
-      {
-        mode = "n";
-        key = "<C-Down>";
-        action = ":resize +2<CR>";
-      }
-      {
-        mode = "n";
-        key = "<C-Left>";
-        action = ":vertical resize -2<CR>";
-      }
-      {
-        mode = "n";
-        key = "<C-Right>";
-        action = ":vertical resize +2<CR>";
-      }
-      # Not needed! use Shift p instead to achieve same effect.
+      # Use Shift p instead to achieve same effect.
+      # Avoid pasting over a word to overwrite the 
+      # yank register
       # {
       #   mode = "x";
       #   key = "<leader>p";
@@ -125,15 +97,11 @@
         action.__raw = "[[\"+Y]]";
       }
       {
-        mode = ["n" "v"];
-        key = "<leader>d";
-        action.__raw = "[[\"_d]]";
-      }
-      {
         mode = "n";
         key = "Q";
         action = "<nop>";
       }
+      # Not working
       {
         mode = "n";
         key = "<leader>fc";
@@ -143,12 +111,6 @@
         mode = "n";
         key = "<leader>s";
         action.__raw = "[[:%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>]]";
-      }
-      {
-        mode = "n";
-        key = "<C-g>";
-        action = ":TagbarToggle<cr>";
-        options.silent = true;
       }
     ];
   };
