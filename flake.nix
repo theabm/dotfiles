@@ -2,7 +2,8 @@
   description = "My NixOS / HomeManager Config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,77 +21,84 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nixvim,
-    agenix,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-  in {
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      nixvim,
+      agenix,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+    in
+    {
+      formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
-    nixosConfigurations = {
-      dede = nixpkgs.lib.nixosSystem {
-        inherit system;
+      nixosConfigurations = {
+        dede = nixpkgs.lib.nixosSystem {
+          inherit system;
 
-        specialArgs = {inherit inputs;};
+          specialArgs = {
+            inherit inputs;
+            unstable = nixpkgs-unstable.legacyPackages.${system};
+          };
 
-        modules = [
-          ./nixos/dede/configuration.nix
+          modules = [
+            ./nixos/dede/configuration.nix
 
-          agenix.nixosModules.default
+            agenix.nixosModules.default
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.andres.imports = [
-                ./home/common
-                nixvim.homeManagerModules.nixvim
-              ];
-            };
-          }
-        ];
-      };
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.andres.imports = [
+                  ./home/common
+                  nixvim.homeManagerModules.nixvim
+                ];
+              };
+            }
+          ];
+        };
 
-      franky = nixpkgs.lib.nixosSystem {
-        inherit system;
+        franky = nixpkgs.lib.nixosSystem {
+          inherit system;
 
-        specialArgs = {inherit inputs;};
+          specialArgs = { inherit inputs; };
 
-        modules = [
-          ./nixos/franky/configuration.nix
-          agenix.nixosModules.default
-        ];
-      };
+          modules = [
+            ./nixos/franky/configuration.nix
+            agenix.nixosModules.default
+          ];
+        };
 
-      inria = nixpkgs.lib.nixosSystem {
-        inherit system;
+        inria = nixpkgs.lib.nixosSystem {
+          inherit system;
 
-        specialArgs = {inherit inputs;};
+          specialArgs = { inherit inputs; };
 
-        modules = [
-          ./nixos/inria/configuration.nix
+          modules = [
+            ./nixos/inria/configuration.nix
 
-          agenix.nixosModules.default
+            agenix.nixosModules.default
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.andres.imports = [
-                ./home/common
-                nixvim.homeManagerModules.nixvim
-              ];
-            };
-          }
-        ];
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.andres.imports = [
+                  ./home/common
+                  nixvim.homeManagerModules.nixvim
+                ];
+              };
+            }
+          ];
+        };
       };
     };
-  };
 }

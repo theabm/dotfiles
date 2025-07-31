@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  unstable,
   ...
 }: let
   system = "x86_64-linux";
@@ -48,11 +49,18 @@ in {
     };
   };
   console.keyMap = "it2";
+  services.hardware.bolt.enable = true;
 
   users.users.andres = {
     isNormalUser = true;
     description = "andres";
-    extraGroups = ["networkmanager" "wheel" "uucp" "dialout" "audio"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "uucp"
+      "dialout"
+      "audio"
+    ];
     packages = [];
   };
 
@@ -77,14 +85,17 @@ in {
     zathura
     feh
     zotero
-    signal-desktop
+    unstable.signal-desktop
     vlc
     bazecor
     ollama-cuda
     ardour
     ente-auth
     vscode
+    obsidian
   ];
+
+  programs.ssh.startAgent = true;
 
   # used for ardour
   security.pam.loginLimits = [
