@@ -5,6 +5,7 @@
       enable = true;
       lspServersToEnable = "all";
     };
+    # TODO: use conform
 
     # Preconfigured config for efmls.
     # Enables formatters to act as lsp servers for nvim.
