@@ -3,9 +3,11 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   system = "x86_64-linux";
-in {
+in
+{
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -38,7 +40,6 @@ in {
   environment.systemPackages = with pkgs; [
     nixos-generators
     thunderbird
-    openconnect
     rustup
     gcc
     kitty
@@ -50,5 +51,4 @@ in {
     bazecor
     uv
   ];
-
 }

@@ -3,14 +3,20 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   system = "x86_64-linux";
-in {
+in
+{
   imports = [
   ];
 
   networking.networkmanager = {
     enable = true;
+    plugins = [
+      pkgs.networkmanager-openconnect
+      pkgs.networkmanager-openvpn
+    ];
   };
 
   hardware.enableAllFirmware = true;
@@ -43,6 +49,7 @@ in {
     tree
     pstree
     rclone
+    qownnotes
   ];
 
   services.openssh = {
@@ -55,10 +62,16 @@ in {
 
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       max-jobs = "auto";
       auto-optimise-store = true;
-      trusted-users = ["root" "andres"];
+      trusted-users = [
+        "root"
+        "andres"
+      ];
       substituters = [
         "https://nix-community.cachix.org"
       ];
