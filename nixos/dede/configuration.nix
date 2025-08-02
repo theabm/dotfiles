@@ -93,6 +93,7 @@ in {
     ente-auth
     vscode
     obsidian
+    nvtopPackages.full
   ];
 
   programs.ssh.startAgent = true;
@@ -112,32 +113,38 @@ in {
     enable = true;
     enable32Bit = true;
   };
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [
+    "modesetting"
+    "amdgpu"
+    "nvidia"
+  ];
+  services.asusd.enable = true;
+  hardware.amdgpu.initrd.enable = true;
 
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
 
-    open = false;
+    open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.latest;
     prime = {
-      # NOTE: It is required to set one of these, otherwise at boot time I get a black screen.
+      # NOTE It is required to set one of these, otherwise at boot time I get a black screen.
 
       # OPTION A - Sync Mode: better performance and reduced
       # screen tearing.
       # the nvidia GPU is not put to sleep completely unless called for.
       # Result: when I use an external monitor (which is often) this option works better
       # as it eliminates flickering and tearing.
-      sync.enable = true;
+      # sync.enable = true;
 
       # Option B - Offload Mode: puts nvidia GPU to sleep and let amd gpu
       # handle all tasks except by specifically offloading an application to it.
-      # offload = {
-      # 	enable = true;
-      # 	enableOffloadCmd = true;
-      # };
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
 
       amdgpuBusId = "PCI:4:0:0";
       nvidiaBusId = "PCI:1:0:0";

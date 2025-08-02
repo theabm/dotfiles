@@ -22,7 +22,7 @@
 
   boot.initrd = {
     availableKernelModules = ["xhci_pci" "nvme" "ahci" "usb_storage" "usbhid" "sd_mod"];
-    kernelModules = [];
+    kernelModules = ["nvidia"];
     luks.devices = {
       "luks-main".device = "/dev/disk/by-uuid/3a5bbe1f-b228-4695-8218-6f02a815cab8";
       "luks-swap".device = "/dev/disk/by-uuid/899e1d08-30b0-422d-a760-389d75acadf2";
