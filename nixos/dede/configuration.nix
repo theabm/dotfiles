@@ -94,7 +94,14 @@ in {
     vscode
     obsidian
     nvtopPackages.full
+    kphotoalbum
   ];
+
+  programs.nix-ld.enable = true;
+
+  # services.actual = {
+  #   enable = true;
+  # };
 
   programs.ssh.startAgent = true;
 

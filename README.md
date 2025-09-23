@@ -5,7 +5,7 @@ Currently I am using:
 
 - OS: NixOS 
 - Package Manager: Nix
-- Desktop: Hyprland 
+- Desktop: KDE
 - Editor: Neovim (through NixVim)
 - Terminal Emulator: Kitty 
 - Shell: Fish

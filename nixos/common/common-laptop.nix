@@ -3,11 +3,9 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   system = "x86_64-linux";
-in
-{
+in {
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -19,12 +17,18 @@ in
     jack.enable = true;
   };
 
+  services.emacs = {
+    enable = true;
+  };
+
   # bluetooth settings
   hardware = {
     # enables support for Bluetooth
-    bluetooth.enable = true;
-    # powers up the default Bluetooth controller on boot
-    bluetooth.powerOnBoot = true;
+    bluetooth = {
+      enable = true;
+      # powers up the default Bluetooth controller on boot
+      powerOnBoot = true;
+    };
   };
 
   # enable blueman to configure bluetooth
@@ -32,6 +36,7 @@ in
 
   fonts.packages = with pkgs; [
     nerd-fonts.hack
+    nerd-fonts.symbols-only
   ];
 
   # Install firefox.
@@ -50,5 +55,10 @@ in
     zotero
     bazecor
     uv
+    localsend
+    pipewire
+    wireplumber
+    alsa-utils
+    alsa-ucm-conf
   ];
 }
