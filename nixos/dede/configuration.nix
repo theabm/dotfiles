@@ -19,7 +19,8 @@ in {
     ../common/common-laptop.nix
 
     # system options
-    ../system/plasma
+    # ../system/plasma
+    ../system/hyprland
   ];
 
   boot.loader.systemd-boot.enable = true;

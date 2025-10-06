@@ -6,12 +6,12 @@
 }: let
   system = "x86_64-linux";
 in {
-  services.xserver.displayManager.gdm.enable = true;
   services.displayManager.autoLogin = {
     enable = true;
     user = "andres";
   };
 
+  services.xserver.displayManager.gdm.enable = true;
   # sddm is shit - prefer gdm
   # services.displayManager.sddm = {
   #   enable = true;
