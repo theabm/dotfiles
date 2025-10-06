@@ -9,6 +9,7 @@
       enable = true;
       shellAliases = {
         v = "nvim";
+        vim = "nvim";
         c = "z";
         za = "zathura";
         y = "yazi";
