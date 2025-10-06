@@ -1,10 +1,10 @@
 {
   programs.nixvim.plugins = {
-    # enable lsp format on save
-    lsp-format = {
-      enable = true;
-      lspServersToEnable = "all";
-    };
+    # # enable lsp format on save
+    # lsp-format = {
+    #   enable = true;
+    #   lspServersToEnable = "all";
+    # };
     # TODO: use conform
 
     # Preconfigured config for efmls.
