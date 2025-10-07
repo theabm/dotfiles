@@ -11,8 +11,12 @@ in {
     user = "andres";
   };
 
-  services.xserver.displayManager.gdm.enable = true;
   # sddm is shit - prefer gdm
+  # other options that work well according to hyprland doc
+  # greetd 
+  # ly
+  services.xserver.displayManager.gdm.enable = true;
+
   # services.displayManager.sddm = {
   #   enable = true;
   #   settings = {
@@ -33,6 +37,7 @@ in {
     xdgOpenUsePortal = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
     ];
   };
 
@@ -41,19 +46,39 @@ in {
 
   environment.systemPackages = with pkgs; [
     kitty
+    # notification system
     mako
+    # libraries for Qt support
     kdePackages.qtwayland
     libsForQt5.qt5.qtwayland
+    # needed for authentication, as alternative use hyprpolkitagent
     kdePackages.polkit-kde-agent-1
+    # status bar
     waybar
+    # wallpaper control at runtime
     swww
+    # clipboard
     clipboard-jh
+    # wayland logout
     wlogout
+    # control music
     playerctl
+    # control brightness 
     brightnessctl
+    # network manager
     networkmanagerapplet
+    # generate colors
     wallust
+    # launcher 
     fuzzel
     libpng
+    # GUI file manager (useful sometimes)
+    kdePackages.dolphin
+    # managing soundcards, volume, etc.
+    pavucontrol
+    # utilities for screenshot: 
+    # (grim: grab screen, slurp: select region, wl-clipboard: copy to clipboard, 
+    # swappy: crop/annotate after capture)
+    grim slurp wl-clipboard swappy
   ];
 }
