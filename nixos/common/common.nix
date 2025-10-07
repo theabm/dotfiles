@@ -35,6 +35,8 @@ in
   programs.neovim.defaultEditor = true;
 
   environment.systemPackages = with pkgs; [
+    envsubst
+    jq
     git-crypt
     wget
     git
