@@ -2,8 +2,10 @@
   description = "My NixOS / HomeManager Config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # uncomment when using hybrid setup
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    # rename to nixpkgs-unstable when using hybrid setup
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -25,7 +27,8 @@
     {
       self,
       nixpkgs,
-      nixpkgs-unstable,
+      # uncomment when using hybrid setup
+      # nixpkgs-unstable,
       home-manager,
       nixvim,
       agenix,
@@ -43,7 +46,8 @@
 
           specialArgs = {
             inherit inputs;
-            unstable = nixpkgs-unstable.legacyPackages.${system};
+            # uncommentn when using hybrid setup
+            # unstable = nixpkgs-unstable.legacyPackages.${system};
           };
 
           modules = [

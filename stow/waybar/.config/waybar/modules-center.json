@@ -11,8 +11,7 @@
             "special": ""
         },
         "persistent-workspaces": {
-            "*": 6,
-
+            "*": 5,
         },
 	    "on-click": "activate",
         "show-special": true,

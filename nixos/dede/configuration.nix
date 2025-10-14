@@ -2,7 +2,8 @@
   config,
   pkgs,
   inputs,
-  unstable,
+  # uncomment when using hybrid setup
+  # unstable,
   ...
 }: let
   system = "x86_64-linux";
@@ -86,7 +87,10 @@ in {
     zathura
     feh
     zotero
-    unstable.signal-desktop
+    # uncomment when using hybrid setup
+    # unstable.signal-desktop
+    signal-desktop
+
     vlc
     bazecor
     ollama-cuda
@@ -99,10 +103,6 @@ in {
   ];
 
   programs.nix-ld.enable = true;
-
-  # services.actual = {
-  #   enable = true;
-  # };
 
   programs.ssh.startAgent = true;
 

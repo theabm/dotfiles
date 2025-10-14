@@ -35,6 +35,10 @@ in {
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
+    config = {
+      common.default = ["gtk"];
+      hyprland.default = ["gtk" "hyprland"];
+    };
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-hyprland
@@ -80,5 +84,8 @@ in {
     # (grim: grab screen, slurp: select region, wl-clipboard: copy to clipboard, 
     # swappy: crop/annotate after capture)
     grim slurp wl-clipboard swappy
+
+    # needed for signal (https://search.nixos.org/packages?channel=unstable&query=kwallet)
+    kdePackages.kwallet
   ];
 }
