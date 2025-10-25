@@ -47,12 +47,6 @@ in {
     };
   };
 
-  virtualisation = {
-    docker = {
-      enable = true;
-    };
-  };
-
   users.users.andres = {
     isNormalUser = true;
     description = "Andres";

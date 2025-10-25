@@ -29,6 +29,9 @@ in
     podman = {
       enable = true;
     };
+    docker = {
+      enable = true;
+    };
   };
 
   programs.neovim.enable = true;
