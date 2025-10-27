@@ -51,7 +51,7 @@
           };
 
           modules = [
-            ./nixos/dede/configuration.nix
+            ./hosts/dede/configuration.nix
 
             agenix.nixosModules.default
 
@@ -75,7 +75,7 @@
           specialArgs = { inherit inputs; };
 
           modules = [
-            ./nixos/franky/configuration.nix
+            ./hosts/franky/configuration.nix
             agenix.nixosModules.default
           ];
         };
@@ -86,7 +86,7 @@
           specialArgs = { inherit inputs; };
 
           modules = [
-            ./nixos/inria/configuration.nix
+            ./hosts/inria/configuration.nix
 
             agenix.nixosModules.default
 

@@ -38,9 +38,9 @@ in
   programs.neovim.defaultEditor = true;
 
   environment.systemPackages = with pkgs; [
-    envsubst
     jq
     git-crypt
+    envsubst
     wget
     git
     lshw
@@ -54,9 +54,9 @@ in
     tree
     pstree
     rclone
-    qownnotes
   ];
 
+  # all hosts will be connected with tailscale
   services.tailscale = {
     enable = true;
     port = 61503;
@@ -71,6 +71,7 @@ in
     };
   };
 
+  # global settings for all hosts
   nix = {
     settings = {
       experimental-features = [

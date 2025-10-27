@@ -6,6 +6,7 @@
 }: let
   system = "x86_64-linux";
 in {
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -18,13 +19,7 @@ in {
     jack.enable = true;
   };
 
-  services.emacs = {
-    enable = true;
-  };
-
-  # bluetooth settings
   hardware = {
-    # enables support for Bluetooth
     bluetooth = {
       enable = true;
       # powers up the default Bluetooth controller on boot
@@ -33,6 +28,7 @@ in {
   };
 
   # enable blueman to configure bluetooth
+  # leads to duplicate icons in KDE
   services.blueman.enable = true;
 
   fonts.packages = with pkgs; [
@@ -40,24 +36,40 @@ in {
     nerd-fonts.symbols-only
   ];
 
-  # Install firefox.
   programs.firefox.enable = true;
 
+  programs.nix-ld.enable = true;
+
   environment.systemPackages = with pkgs; [
+    vlc
+    feh
+
+    # management
     nixos-generators
+
+    # gui
     thunderbird
+    firefox
+    zotero
+    qownnotes
+
+    # programming related
     rustup
     gcc
-    kitty
-    firefox
-    emacs
-    stow
-    magic-wormhole-rs
-    zotero
-    bazecor
     uv
+
+    # editors
+    vscode
+
+    # tui
+    kitty
     localsend
+    stow
+    bat
+
+    # utils
     alsa-utils
     alsa-ucm-conf
+    ente-auth
   ];
 }

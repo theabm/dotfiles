@@ -13,15 +13,15 @@ in {
     ./hardware-configuration.nix
 
     # utilities
-    # ../common/wireguard-server.nix
+    # ../../modules/common/wireguard-server.nix
 
     # common options imported for all configurations
-    ../common/common.nix
-    ../common/common-laptop.nix
+    ../../modules/common/common-all.nix
+    ../../modules/common/common-laptop.nix
 
     # system options
-    # ../system/plasma
-    ../system/hyprland
+    # ../../system/plasma
+    ../../modules/system/hyprland
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -84,29 +84,16 @@ in {
 
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
-    bat
-    zellij
-    zathura
-    feh
-    zotero
     # uncomment when using hybrid setup
     # unstable.signal-desktop
     signal-desktop
 
-    vlc
     bazecor
-    ollama-cuda
     ardour
-    ente-auth
-    vscode
     obsidian
+
     nvtopPackages.full
-    kphotoalbum
   ];
-
-  programs.nix-ld.enable = true;
-
-  # programs.ssh.startAgent = true;
 
   # used for ardour
   security.pam.loginLimits = [

@@ -12,8 +12,30 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../common/common.nix
-    ../common/common-laptop.nix
+    ../../modules/common/common-all.nix
+    ../../modules/common/common-laptop.nix
+
+    ../../modules/ingress/caddy.nix
+    ../../modules/services/navidrome.nix
+  ];
+
+  ingress.caddy = {
+    enable = true;
+    email = "andres.bermeomarinelli@proton.me";
+  };
+
+  servicesx.navidrome = {
+    enable = true;
+    domain = "music.dedes-dung-pile.com";
+    musicDir = "/srv/music";        # create and put FLAC/MP3 here
+    dataDir  = "/var/lib/navidrome";
+    # extraSettings = { LogLevel = "info"; };
+  };
+
+  # Optional: open Samba/NFS later; for now just ensure directories exist
+  systemd.tmpfiles.rules = [
+    "d /srv/music 0755 root root -"
+    "d /var/lib/navidrome 0755 navidrome navidrome -"
   ];
 
   boot.loader.systemd-boot.enable = true;
