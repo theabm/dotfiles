@@ -15,9 +15,9 @@ in {
   # other options that work well according to hyprland doc
   # greetd 
   # ly
-  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = true;
 
-  # services.displayManager.sddm = {
+  # services.sddm = {
   #   enable = true;
   #   settings = {
   #     General = {
@@ -57,6 +57,7 @@ in {
     libsForQt5.qt5.qtwayland
     # needed for authentication, as alternative use hyprpolkitagent
     kdePackages.polkit-kde-agent-1
+    kdePackages.gwenview
     # status bar
     waybar
     # wallpaper control at runtime

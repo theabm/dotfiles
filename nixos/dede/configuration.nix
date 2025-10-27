@@ -53,6 +53,8 @@ in {
   console.keyMap = "it2";
   services.hardware.bolt.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+
   users.users.andres = {
     isNormalUser = true;
     description = "andres";
@@ -104,7 +106,7 @@ in {
 
   programs.nix-ld.enable = true;
 
-  programs.ssh.startAgent = true;
+  # programs.ssh.startAgent = true;
 
   # used for ardour
   security.pam.loginLimits = [
