@@ -62,7 +62,7 @@
                 useUserPackages = true;
                 users.andres.imports = [
                   ./home/common
-                  nixvim.homeManagerModules.nixvim
+                  nixvim.homeModules.nixvim
                 ];
               };
             }
@@ -97,7 +97,7 @@
                 useUserPackages = true;
                 users.andres.imports = [
                   ./home/common
-                  nixvim.homeManagerModules.nixvim
+                  nixvim.homeModules.nixvim
                 ];
               };
             }
