@@ -63,6 +63,18 @@ in
     openFirewall = true;
   };
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
+    knownHosts = {
+        "dede".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO4i3B/ShuuG5zvddLbazGYNEfat3C8TF7d5ixARpHUb";
+        "inria".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFsVSFkgotLaKFPnU2RJzr3/0oVttztRUnf+jiGu8A7c";
+      };
+  };
+
   nix = {
     settings = {
       experimental-features = [
