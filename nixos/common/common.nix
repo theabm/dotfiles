@@ -57,6 +57,12 @@ in
     qownnotes
   ];
 
+  services.tailscale = {
+    enable = true;
+    port = 61503;
+    openFirewall = true;
+  };
+
   services.openssh = {
     enable = true;
     settings = {
