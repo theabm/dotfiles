@@ -53,7 +53,7 @@ in {
   console.keyMap = "it2";
   services.hardware.bolt.enable = true;
 
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
 
   users.users.andres = {
     isNormalUser = true;
@@ -93,6 +93,9 @@ in {
     obsidian
 
     nvtopPackages.full
+
+    # programming IDE
+    code-cursor
   ];
 
   # used for ardour
