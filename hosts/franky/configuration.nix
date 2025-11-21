@@ -34,7 +34,7 @@
 
   users.users.andres = {
     isNormalUser = true;
-    description = "Andres";
+    description = "andres";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [];
   };

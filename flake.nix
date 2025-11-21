@@ -69,14 +69,16 @@
           ];
         };
 
-        franky = nixpkgs.lib.nixosSystem {
+        rome = nixpkgs.lib.nixosSystem {
           inherit system;
 
           specialArgs = { inherit inputs; };
 
           modules = [
-            ./hosts/franky/configuration.nix
+            ./hosts/rome/configuration.nix
+
             agenix.nixosModules.default
+
           ];
         };
 

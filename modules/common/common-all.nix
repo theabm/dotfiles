@@ -11,14 +11,6 @@ in
   imports = [
   ];
 
-  networking.networkmanager = {
-    enable = true;
-    plugins = [
-      pkgs.networkmanager-openconnect
-      pkgs.networkmanager-openvpn
-    ];
-  };
-
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
 
@@ -55,6 +47,8 @@ in
     pstree
     rclone
   ];
+
+  programs.nix-ld.enable = true;
 
   # all hosts will be connected with tailscale
   services.tailscale = {

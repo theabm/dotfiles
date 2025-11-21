@@ -7,6 +7,14 @@
   system = "x86_64-linux";
 in {
 
+  networking.networkmanager = {
+    enable = true;
+    plugins = [
+      pkgs.networkmanager-openconnect
+      pkgs.networkmanager-openvpn
+    ];
+  };
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -37,8 +45,6 @@ in {
   ];
 
   programs.firefox.enable = true;
-
-  programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; [
     vlc
