@@ -44,21 +44,4 @@
   environment.systemPackages = with pkgs; [];
 
   system.stateVersion = "24.11";
-
-  # optional -- DELETE LATER ONCE SERVER IS SET
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "andres";
-  programs.firefox.enable = true;
 }
