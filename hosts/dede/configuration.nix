@@ -95,7 +95,7 @@ in {
     nvtopPackages.full
 
     # programming IDE
-    code-cursor
+    jetbrains.pycharm
   ];
 
   # used for ardour
