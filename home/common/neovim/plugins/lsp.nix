@@ -11,7 +11,7 @@
     # Enables formatters to act as lsp servers for nvim.
     efmls-configs = {
       enable = true;
-      setup = {
+      languages = {
         python.formatter = "black";
         nix.formatter = "alejandra";
       };

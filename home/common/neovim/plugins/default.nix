@@ -27,8 +27,8 @@
     colorizer.enable = true;
     # show context (for example, for long functions, it shows which function you
     # are inspecting)
-    treesitter-context.enable = true;
-    treesitter-refactor.enable = true;
+    # treesitter-context.enable = true;
+    # treesitter-refactor.enable = true;
     # commenting with ease
     comment.enable = true;
     # git signs for viewing changes
