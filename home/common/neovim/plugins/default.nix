@@ -3,7 +3,6 @@
     ./completion.nix
     ./lsp.nix
     ./telescope.nix
-    ./neorg.nix
     # ./hardtime.nix
     ./treesitter.nix
   ];
