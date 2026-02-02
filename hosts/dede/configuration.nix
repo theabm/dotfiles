@@ -96,6 +96,9 @@ in {
 
     # programming IDE
     jetbrains.pycharm
+    opencode
+    code-cursor
+
   ];
 
   # used for ardour
