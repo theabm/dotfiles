@@ -98,8 +98,19 @@ in {
     jetbrains.pycharm
     opencode
     code-cursor
+    vscode
+
+    # book
+    foliate
+    calibre
+
+    kdePackages.okular
 
   ];
+  # services.paperless = {
+  #   enable = true;
+  #   port = 2223;
+  # };
 
   # used for ardour
   security.pam.loginLimits = [
