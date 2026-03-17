@@ -83,6 +83,7 @@ in {
   };
 
   programs.steam.enable = true;
+  programs.kdeconnect.enable = true;
   environment.systemPackages = with pkgs; [
     # uncomment when using hybrid setup
     # unstable.signal-desktop
@@ -106,6 +107,7 @@ in {
 
     kdePackages.okular
 
+    bindfs
   ];
   # services.paperless = {
   #   enable = true;
