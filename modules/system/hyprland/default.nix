@@ -61,7 +61,7 @@ in {
     # status bar
     waybar
     # wallpaper control at runtime
-    swww
+    awww
     # clipboard
     clipboard-jh
     # wayland logout

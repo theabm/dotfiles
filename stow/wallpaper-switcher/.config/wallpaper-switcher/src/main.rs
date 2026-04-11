@@ -55,13 +55,13 @@ impl WallpaperManager {
 
             // FIX Not sure why, but if eDP-1 and HDMI-A-1 are connected, and I only call
             // this for eDP-1, it will also change the wallpaper for HDMI-A-1
-            let _ = Command::new("swww")
+            let _ = Command::new("awww")
                 .arg("img")
                 .arg(chosen)
                 .arg("--outputs")
                 .arg(out)
                 .status()
-                .expect("failed to execute swww");
+                .expect("failed to execute awww");
         }
 
         // Update colors once (no need per-output)

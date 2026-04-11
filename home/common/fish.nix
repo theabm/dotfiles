@@ -53,6 +53,7 @@
     yazi = {
       enable = true;
       enableFishIntegration = true;
+      shellWrapperName = "y";
     };
 
     ripgrep.enable = true;

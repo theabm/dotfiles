@@ -11,7 +11,7 @@ if (( ${#MONS[@]} == 0 )); then
 fi
 
 # (Optional) ensure swww is running; harmless if already running
-swww query >/dev/null 2>&1 || swww init
+awww query >/dev/null 2>&1 || awww-daemon &
 
 # Call the Rust binary with all monitor names as args
 # Adjust the binary path if different
