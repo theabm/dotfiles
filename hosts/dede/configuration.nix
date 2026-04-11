@@ -84,6 +84,11 @@ in {
 
   programs.steam.enable = true;
   programs.kdeconnect.enable = true;
+  programs.tmux = {
+    enable = true;
+    keyMode = "vi";
+
+  };
   environment.systemPackages = with pkgs; [
     # uncomment when using hybrid setup
     # unstable.signal-desktop
@@ -108,6 +113,10 @@ in {
     kdePackages.okular
 
     bindfs
+
+    discord
+
+    zellij
   ];
   # services.paperless = {
   #   enable = true;
