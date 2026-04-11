@@ -1,0 +1,7 @@
+interface:
+  display_name: "Hyprland Safe Refactor"
+  short_description: "Safe stow-aware Hyprland config splits"
+  default_prompt: "Use $hyprland-safe-refactor to extract or reorganize stowed Hyprland config without breaking sourced files."
+
+policy:
+  allow_implicit_invocation: true
