@@ -36,7 +36,7 @@
   users.users.andres = {
     isNormalUser = true;
     description = "andres";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm"];
     packages = with pkgs; [];
   };
   security.sudo.wheelNeedsPassword = true;

@@ -24,10 +24,25 @@ in
     docker = {
       enable = true;
     };
+    # for virtual machines
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+        swtpm.enable = true;      # TPM emulation (needed for some Ubuntu features)
+      };
+    };
   };
 
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
+  programs = {
+    # for virtual machines
+    virt-manager.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     jq

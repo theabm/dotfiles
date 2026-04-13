@@ -64,6 +64,9 @@ in {
       "uucp"
       "dialout"
       "audio"
+      "libvirtd"
+      "kvm"
+      "input"
     ];
     packages = [];
   };
@@ -117,6 +120,9 @@ in {
     discord
 
     zellij
+
+    voxtype-vulkan
+    wtype
   ];
   # services.paperless = {
   #   enable = true;
