@@ -58,8 +58,9 @@ in {
     # needed for authentication, as alternative use hyprpolkitagent
     kdePackages.polkit-kde-agent-1
     kdePackages.gwenview
-    # status bar
+    # status bars
     waybar
+    quickshell
     # wallpaper control at runtime
     awww
     # clipboard
