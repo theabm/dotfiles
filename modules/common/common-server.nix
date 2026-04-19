@@ -11,7 +11,5 @@ in
 {
   imports = [
   ];
-  # user networkd for servers
-  networking.useNetworkd = true;
 
 }

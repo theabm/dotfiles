@@ -6,14 +6,10 @@
 }: let
   system = "x86_64-linux";
 in {
-
-  networking.networkmanager = {
-    enable = true;
-    plugins = [
+  networking.networkmanager.plugins = [
       pkgs.networkmanager-openconnect
       pkgs.networkmanager-openvpn
     ];
-  };
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
 

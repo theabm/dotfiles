@@ -10,6 +10,7 @@ in
 {
   imports = [
   ];
+  networking.networkmanager.enable = true;
 
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
