@@ -33,6 +33,9 @@ in {
     };
   };
 
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+
   # enable blueman to configure bluetooth
   # leads to duplicate icons in KDE
   services.blueman.enable = true;

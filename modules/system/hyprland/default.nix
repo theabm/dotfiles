@@ -50,16 +50,13 @@ in {
 
   environment.systemPackages = with pkgs; [
     kitty
-    # notification system
-    mako
     # libraries for Qt support
     kdePackages.qtwayland
     libsForQt5.qt5.qtwayland
     # needed for authentication, as alternative use hyprpolkitagent
     kdePackages.polkit-kde-agent-1
     kdePackages.gwenview
-    # status bars
-    waybar
+
     quickshell
     # wallpaper control at runtime
     awww
@@ -75,19 +72,11 @@ in {
     networkmanagerapplet
     # generate colors
     wallust
-    # launcher 
-    fuzzel
+
     libpng
-    # GUI file manager (useful sometimes)
-    kdePackages.dolphin
     # managing soundcards, volume, etc.
     pavucontrol
-    # utilities for screenshot: 
-    # (grim: grab screen, slurp: select region, wl-clipboard: copy to clipboard, 
-    # swappy: crop/annotate after capture)
-    grim slurp wl-clipboard swappy
 
-    # needed for signal (https://search.nixos.org/packages?channel=unstable&query=kwallet)
-    kdePackages.kwallet
+    hyprshot
   ];
 }

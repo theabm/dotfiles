@@ -1,6 +1,13 @@
 {
   description = "My NixOS / HomeManager Config";
 
+  nixConfig = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+  };
+
   inputs = {
     # uncomment when using hybrid setup
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -21,6 +28,11 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -32,6 +44,7 @@
       home-manager,
       nixvim,
       agenix,
+      noctalia,
       ...
     }@inputs:
     let
@@ -52,6 +65,7 @@
 
           modules = [
             ./hosts/dede/configuration.nix
+            ./modules/system/noctalia
 
             agenix.nixosModules.default
 

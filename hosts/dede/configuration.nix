@@ -24,7 +24,10 @@ in {
     ../../modules/system/hyprland
   ];
 
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 5;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "dede";
@@ -67,6 +70,8 @@ in {
       "libvirtd"
       "kvm"
       "input"
+      # brighness
+      "i2c"
     ];
     packages = [];
   };
@@ -139,7 +144,9 @@ in {
     }
   ];
 
-  # new option for opengl
+  # bridghtness control
+  hardware.i2c.enable = true;
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
