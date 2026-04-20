@@ -33,6 +33,13 @@
   };
   console.useXkbConfig = true;
 
+  services.paperless.enable = true;
+  services.karakeep.enable = true;
+  services.actual.enable = true;
+  services.immich.enable = true;
+  services.grafana.enable = true;
+  services.nextcloud.enable = true;
+
   users.users.andres = {
     isNormalUser = true;
     description = "andres";
