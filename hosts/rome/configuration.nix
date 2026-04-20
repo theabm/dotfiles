@@ -3,16 +3,14 @@
   imports =
     [ 
       ./hardware-configuration.nix
-      ../../modules/common/common-all.nix
-      ../../modules/common/common-server.nix
+      ../../modules/profiles/base.nix
+      ../../modules/profiles/server.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "rome"; 
-
-  networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Rome";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -37,15 +35,24 @@
   services.karakeep.enable = true;
   services.actual.enable = true;
   services.immich.enable = true;
-  services.grafana.enable = true;
-  services.nextcloud.enable = true;
 
-  users.users.andres = {
-    isNormalUser = true;
-    description = "andres";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm"];
-    packages = with pkgs; [];
-  };
+  # TODO: enable once backed by real hostnames and secrets.
+  # services.grafana = {
+  #   enable = true;
+  #   settings.security.secret_key = "$__file{/run/agenix/grafana-secret-key}";
+  # };
+  #
+  # services.nextcloud = {
+  #   enable = true;
+  #   package = pkgs.nextcloud33;
+  #   hostName = "cloud.example.com";
+  #   config = {
+  #     dbtype = "pgsql";
+  #     adminpassFile = "/run/agenix/nextcloud-admin-password";
+  #   };
+  # };
+
+  users.users.andres.extraGroups = [ "libvirtd" "kvm"];
   security.sudo.wheelNeedsPassword = true;
   services.getty.autologinUser = "andres";
   environment.systemPackages = with pkgs; [];

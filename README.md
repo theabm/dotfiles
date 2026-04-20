@@ -5,9 +5,7 @@ Currently I am using:
 
 - OS: NixOS 
 - Package Manager: Nix
-- Desktop: KDE
+- Desktop: Hyprland on `dede`, KDE Plasma on selected hosts
 - Editor: Neovim (through NixVim)
 - Terminal Emulator: Kitty 
 - Shell: Fish
-
-Hopefully this can help some new users like myself :)

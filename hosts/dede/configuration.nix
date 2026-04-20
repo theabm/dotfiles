@@ -11,11 +11,8 @@ in {
   imports = [
     ./hardware-configuration.nix
 
-    # common options 
-    ../../modules/common/common-all.nix
-    ../../modules/common/common-laptop.nix
-
-    # system specific options
+    ../../modules/profiles/base.nix
+    ../../modules/profiles/laptop.nix
     ../../modules/system/hyprland
   ];
 
@@ -51,27 +48,18 @@ in {
   console.keyMap = "it2";
   services.hardware.bolt.enable = true;
 
-  # services.gnome.gnome-keyring.enable = true;
-
-  users.users.andres = {
-    isNormalUser = true;
-    description = "andres";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      # ardour
-      "uucp"
-      "dialout"
-      "audio"
-      # qemu / kvm
-      "libvirtd"
-      "kvm"
-      "input"
-      # brighness
-      "i2c"
-    ];
-    packages = [];
-  };
+  users.users.andres.extraGroups = [
+    # ardour
+    "uucp"
+    "dialout"
+    "audio"
+    # qemu / kvm
+    "libvirtd"
+    "kvm"
+    "input"
+    # brightness
+    "i2c"
+  ];
 
   # define a secret
   age.secrets = {
@@ -139,7 +127,7 @@ in {
     }
   ];
 
-  # bridghtness control
+  # brightness control
   hardware.i2c.enable = true;
 
   hardware.graphics = {

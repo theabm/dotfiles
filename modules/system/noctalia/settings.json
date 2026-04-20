@@ -129,6 +129,12 @@
           "textColor": "none"
         },
         {
+          "colorName": "primary",
+          "hideWhenIdle": false,
+          "id": "AudioVisualizer",
+          "width": 200
+        },
+        {
           "colorizeDistroLogo": false,
           "colorizeSystemIcon": "none",
           "colorizeSystemText": "none",

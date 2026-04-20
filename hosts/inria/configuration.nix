@@ -10,13 +10,13 @@
   system = "x86_64-linux";
 in {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/common/common-all.nix
-    ../../modules/common/common-laptop.nix
+    ../../modules/profiles/base.nix
+    ../../modules/profiles/laptop.nix
 
     ../../modules/ingress/caddy.nix
     ../../modules/services/navidrome.nix
+    ../../modules/system/plasma
   ];
 
   ingress.caddy = {
@@ -58,9 +58,6 @@ in {
     LC_TIME = "it_IT.UTF-8";
   };
 
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
   services.xserver = {
     enable = true;
     xkb = {
@@ -69,14 +66,9 @@ in {
     };
   };
 
-  users.users.andres = {
-    isNormalUser = true;
-    description = "Andres";
-    extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
-  };
+  users.users.andres.packages = with pkgs; [
+    kdePackages.kate
+  ];
 
   environment.systemPackages = with pkgs; [
     zellij

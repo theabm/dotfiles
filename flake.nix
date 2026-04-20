@@ -9,9 +9,6 @@
   };
 
   inputs = {
-    # uncomment when using hybrid setup
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    # rename to nixpkgs-unstable when using hybrid setup
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -39,8 +36,6 @@
     {
       self,
       nixpkgs,
-      # uncomment when using hybrid setup
-      # nixpkgs-unstable,
       home-manager,
       nixvim,
       agenix,
@@ -49,6 +44,16 @@
     }@inputs:
     let
       system = "x86_64-linux";
+      andresHomeManager = {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.andres.imports = [
+            ./home/common
+            nixvim.homeModules.nixvim
+          ];
+        };
+      };
     in
     {
       formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
@@ -59,8 +64,6 @@
 
           specialArgs = {
             inherit inputs;
-            # uncommentn when using hybrid setup
-            # unstable = nixpkgs-unstable.legacyPackages.${system};
           };
 
           modules = [
@@ -70,16 +73,7 @@
             agenix.nixosModules.default
 
             home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.andres.imports = [
-                  ./home/common
-                  nixvim.homeModules.nixvim
-                ];
-              };
-            }
+            andresHomeManager
           ];
         };
 
@@ -107,16 +101,7 @@
             agenix.nixosModules.default
 
             home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.andres.imports = [
-                  ./home/common
-                  nixvim.homeModules.nixvim
-                ];
-              };
-            }
+            andresHomeManager
           ];
         };
       };

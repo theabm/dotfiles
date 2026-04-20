@@ -11,22 +11,7 @@ in {
     user = "andres";
   };
 
-  # sddm is shit - prefer gdm
-  # other options that work well according to hyprland doc
-  # greetd 
-  # ly
   services.displayManager.gdm.enable = true;
-
-  # services.sddm = {
-  #   enable = true;
-  #   settings = {
-  #     General = {
-  #       DefaultSession = "hyprland.desktop";
-  #     };
-  #   };
-  #   theme = "sugar-dark";
-  # };
-
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -58,8 +43,6 @@ in {
     kdePackages.gwenview
 
     quickshell
-    # wallpaper control at runtime
-    awww
     # clipboard
     clipboard-jh
     # wayland logout
