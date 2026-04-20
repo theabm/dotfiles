@@ -78,5 +78,8 @@ in {
     alsa-utils
     alsa-ucm-conf
     ente-auth
+
+    # wl
+    wl-clipboard
   ];
 }
