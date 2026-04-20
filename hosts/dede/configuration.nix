@@ -9,18 +9,13 @@
   system = "x86_64-linux";
 in {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    # utilities
-    # ../../modules/common/wireguard-server.nix
-
-    # common options imported for all configurations
+    # common options 
     ../../modules/common/common-all.nix
     ../../modules/common/common-laptop.nix
 
-    # system options
-    # ../../system/plasma
+    # system specific options
     ../../modules/system/hyprland
   ];
 
@@ -64,9 +59,11 @@ in {
     extraGroups = [
       "networkmanager"
       "wheel"
+      # ardour
       "uucp"
       "dialout"
       "audio"
+      # qemu / kvm
       "libvirtd"
       "kvm"
       "input"
@@ -98,9 +95,9 @@ in {
 
   };
   environment.systemPackages = with pkgs; [
-    # uncomment when using hybrid setup
-    # unstable.signal-desktop
     signal-desktop
+    discord
+    spotify
 
     bazecor
     ardour
@@ -119,22 +116,20 @@ in {
     calibre
 
     kdePackages.okular
-
     bindfs
 
-    discord
-
-    zellij
-
+    # voxtype (speech to text)
     voxtype-vulkan
     wtype
-  ];
-  # services.paperless = {
-  #   enable = true;
-  #   port = 2223;
-  # };
 
-  # used for ardour
+    # productivity
+    super-productivity
+
+    # brightness control
+    ddcutil
+  ];
+
+  # used for ardour DAW
   security.pam.loginLimits = [
     {
       domain = "@audio";
