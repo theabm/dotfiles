@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -7,9 +6,9 @@
   system = "x86_64-linux";
 in {
   networking.networkmanager.plugins = [
-      pkgs.networkmanager-openconnect
-      pkgs.networkmanager-openvpn
-    ];
+    pkgs.networkmanager-openconnect
+    pkgs.networkmanager-openvpn
+  ];
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
 
