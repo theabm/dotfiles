@@ -2,31 +2,44 @@
 set -euo pipefail
 
 # This script configures Hyprland workspace assignment dynamically.
-# If an external monitor (not eDP-1) is connected, it applies the external
-# template with the detected monitor name. Otherwise, it falls back to internal.
+# If an external monitor is connected, it applies the external template with
+# the detected monitor name. Otherwise, it falls back to internal-only rules.
 
-# Get all monitor names
-MONITORS=$(hyprctl monitors -j | jq -r '.[].name')
-
-# Internal monitor (fixed)
 INT_MON="eDP-1"
-
-# Find first monitor that isn't eDP-1
-EXT_MON=$(echo "$MONITORS" | grep -v "^${INT_MON}$" | head -n1 || true)
-
 TEMPLATES_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/hypr"
 RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp}/hypr"
 ACTIVE_CONF="${RUNTIME_DIR}/monitors_active.conf"
+
 mkdir -p "${RUNTIME_DIR}"
+
+mapfile -t monitors < <(hyprctl monitors -j | jq -r '.[].name')
+
+EXT_MON=""
+for monitor in "${monitors[@]}"; do
+    if [[ "${monitor}" != "${INT_MON}" ]]; then
+        EXT_MON="${monitor}"
+        break
+    fi
+done
+
+render_template() {
+    local template="$1"
+    local tmp
+
+    tmp="$(mktemp "${RUNTIME_DIR}/monitors_active.XXXXXX")"
+    sed \
+        -e "s|\${INT_MON}|${INT_MON}|g" \
+        -e "s|\${EXT_MON}|${EXT_MON}|g" \
+        "${template}" > "${tmp}"
+    mv "${tmp}" "${ACTIVE_CONF}"
+}
 
 if [[ -n "${EXT_MON}" ]]; then
     echo "[hypr-monitor-setup] External monitor detected: ${EXT_MON}"
-    export EXT_MON INT_MON
-    envsubst < "${TEMPLATES_DIR}/monitors_external.tmpl" > "${ACTIVE_CONF}"
+    render_template "${TEMPLATES_DIR}/monitors_external.tmpl"
 else
     echo "[hypr-monitor-setup] No external monitor detected - using internal only"
-    export INT_MON
-    envsubst < "${TEMPLATES_DIR}/monitors_internal.tmpl" > "${ACTIVE_CONF}"
+    render_template "${TEMPLATES_DIR}/monitors_internal.tmpl"
 fi
 
 batch=""
@@ -36,4 +49,6 @@ while IFS= read -r line; do
     batch+="keyword workspace ${rule};"
 done < "${ACTIVE_CONF}"
 
-hyprctl --batch "${batch}"
+if [[ -n "${batch}" ]]; then
+    hyprctl --batch "${batch}"
+fi
