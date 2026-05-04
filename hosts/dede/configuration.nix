@@ -75,8 +75,20 @@ in {
     };
   };
 
-  programs.steam.enable = true;
-  programs.steam.extraCompatPackages = with pkgs; [ proton-ge-bin ];
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    extraCompatPackages = with pkgs; [proton-ge-bin];
+    extraPackages = with pkgs; [
+      gamemode
+      mangohud
+    ];
+  };
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+  programs.gamemode.enable = true;
   hardware.steam-hardware.enable = true;
   hardware.uinput.enable = true;
   hardware.xpadneo.enable = true;
@@ -88,7 +100,6 @@ in {
   programs.tmux = {
     enable = true;
     keyMode = "vi";
-
   };
   environment.systemPackages = with pkgs; [
     signal-desktop
@@ -100,6 +111,11 @@ in {
     obsidian
 
     nvtopPackages.full
+    mangohud
+    protontricks
+    steam-run
+    vulkan-tools
+    mesa-demos
 
     # programming IDE
     jetbrains.pycharm
