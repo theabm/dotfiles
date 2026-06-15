@@ -37,7 +37,7 @@ in {
     kitty
     # libraries for Qt support
     kdePackages.qtwayland
-    libsForQt5.qt5.qtwayland
+    qt5.qtwayland
     # needed for authentication, as alternative use hyprpolkitagent
     kdePackages.polkit-kde-agent-1
     kdePackages.gwenview

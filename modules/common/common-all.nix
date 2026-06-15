@@ -56,12 +56,12 @@ in
     bat
     ripgrep
     inputs.agenix.packages.${system}.default
-    wireguard-tools
     sshfs
     fd
     tree
     pstree
     rclone
+    bindfs
   ];
 
   programs.nix-ld.enable = true;
