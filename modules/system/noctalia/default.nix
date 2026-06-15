@@ -2,27 +2,30 @@
   pkgs,
   inputs,
   ...
-}: {
-  home-manager.users.andres = {
-    imports = [inputs.noctalia.homeModules.default];
-    programs.noctalia-shell = {
-      enable = true;
-      settings = builtins.fromJSON (builtins.readFile ./settings.json);
-    };
+}: let
+  dotfiles = "/home/andres/dotfiles";
+  noctaliaPackage =
+    inputs.noctalia.packages.${pkgs.system}.default
+    or inputs.noctalia.packages.${pkgs.system}.noctalia-shell;
+in {
+  environment.systemPackages = [
+    noctaliaPackage
+  ];
 
-    systemd.user.services.nm-applet = {
-      Unit = {
-        Description = "NetworkManager applet and secret agent";
-        After = ["graphical-session.target"];
-        PartOf = ["graphical-session.target"];
-      };
+  systemd.tmpfiles.rules = [
+    "d /home/andres/.config/noctalia 0755 andres users -"
+    "L+ /home/andres/.config/noctalia/settings.json - andres users - ${dotfiles}/modules/system/noctalia/settings.json"
+  ];
 
-      Service = {
-        ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
-        Restart = "on-failure";
-      };
+  systemd.user.services.nm-applet = {
+    description = "NetworkManager applet and secret agent";
+    after = ["graphical-session.target"];
+    partOf = ["graphical-session.target"];
+    wantedBy = ["graphical-session.target"];
 
-      Install.WantedBy = ["graphical-session.target"];
+    serviceConfig = {
+      ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
+      Restart = "on-failure";
     };
   };
 }

@@ -1,5 +1,5 @@
 {
-  description = "My NixOS / HomeManager Config";
+  description = "My NixOS Config";
 
   nixConfig = {
     extra-substituters = [ "https://noctalia.cachix.org" ];
@@ -10,16 +10,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -36,24 +26,12 @@
     {
       self,
       nixpkgs,
-      home-manager,
-      nixvim,
       agenix,
       noctalia,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
-      andresHomeManager = {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.andres.imports = [
-            ./home/common
-            nixvim.homeModules.nixvim
-          ];
-        };
-      };
     in
     {
       formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
@@ -71,9 +49,6 @@
             ./modules/system/noctalia
 
             agenix.nixosModules.default
-
-            home-manager.nixosModules.home-manager
-            andresHomeManager
           ];
         };
 
@@ -99,9 +74,6 @@
             ./hosts/inria/configuration.nix
 
             agenix.nixosModules.default
-
-            home-manager.nixosModules.home-manager
-            andresHomeManager
           ];
         };
       };
