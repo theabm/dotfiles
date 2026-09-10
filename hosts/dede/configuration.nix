@@ -13,7 +13,7 @@ in {
 
     ../../modules/profiles/base.nix
     ../../modules/profiles/laptop.nix
-    ../../modules/system/hyprland
+    ../../modules/system/plasma
   ];
 
   boot.loader.systemd-boot = {
@@ -103,7 +103,6 @@ in {
   };
   environment.systemPackages = with pkgs; [
     signal-desktop
-    discord
     spotify
 
     bazecor
@@ -119,9 +118,8 @@ in {
 
     # programming IDE
     jetbrains.pycharm
-    opencode
-    code-cursor
     vscode
+    codex
 
     # book
     foliate
@@ -139,6 +137,10 @@ in {
 
     # brightness control
     ddcutil
+
+    # mail and communication
+    protonmail-desktop
+    discord
   ];
 
   # used for ardour DAW

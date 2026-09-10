@@ -14,6 +14,7 @@
 
   boot = {
     kernelModules = ["kvm-amd"];
+    kernelParams = ["amdgpu.dcdebugmask=0x40000"];
     extraModulePackages = [];
     kernelPackages = pkgs.linuxPackages;
     # kernelPackages = pkgs.linuxPackages_xanmod_latest;
