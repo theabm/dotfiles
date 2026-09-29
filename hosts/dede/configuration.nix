@@ -101,6 +101,11 @@ in {
     enable = true;
     keyMode = "vi";
   };
+
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-cuda;
+  };
   environment.systemPackages = with pkgs; [
     signal-desktop
     spotify
@@ -117,9 +122,9 @@ in {
     mesa-demos
 
     # programming IDE
-    jetbrains.pycharm
     vscode
     codex
+    #codexbar
 
     # book
     foliate
@@ -129,7 +134,7 @@ in {
     bindfs
 
     # voxtype (speech to text)
-    voxtype-vulkan
+    # voxtype-vulkan
     wtype
 
     # productivity
