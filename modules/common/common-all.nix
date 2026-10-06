@@ -83,6 +83,8 @@ in
     port = 61503;
     openFirewall = true;
   };
+  # needed with tailscale (recommended to have networkmanager + resolved)
+  services.resolved.enable = true;
 
   services.openssh = {
     enable = true;
