@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  dotfiles = "/home/andres/dotfiles";
+  dotfiles = "/home/andres/code/dotfiles";
   user = "andres";
   group = "users";
 
