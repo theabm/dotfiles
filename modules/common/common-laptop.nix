@@ -83,7 +83,7 @@ in {
     # gui
     thunderbird
     firefox
-    zotero
+    #zotero
 
     # programming related
     rustup
