@@ -124,7 +124,11 @@ in {
     # programming IDE
     vscode
     codex
-    #codexbar
+    claude-code
+    claude-monitor
+    claude-code-router
+
+    gh
 
     # book
     foliate
